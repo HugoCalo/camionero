@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox alignment="CENTER" prefHeight="321.0" prefWidth="373.0" spacing="12.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXMLDocumentController">
-   <children>
-        <Button fx:id="buttonClick" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonAction" prefWidth="80.0" text="Click" />
-        <Label fx:id="labelMessage" lineSpacing="4.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" textAlignment="CENTER" wrapText="true" />
-   </children>
-</VBox>
+<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXMLDocumentController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../OneDrive/Pictures/20210405_152242~2.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="211.0">
+         <children>
+            <VBox layoutX="30.0" layoutY="78.0" prefHeight="243.0" prefWidth="277.0">
+               <children>
+                  <Label text="Usuario" />
+                  <TextField />
+                  <Label text="Contraseña" />
+                  <TextField />
+                  <Button fx:id="button_init_sesion" mnemonicParsing="false" prefHeight="25.0" prefWidth="369.0" text="Iniciar sesión">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="button_registro" mnemonicParsing="false" prefHeight="25.0" prefWidth="297.0" text="Crear cuenta">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

@@ -18,17 +18,15 @@ import javafx.scene.control.Label;
  * @author jsoler
  */
 public class FXMLDocumentController implements Initializable {
-    //========================================================
-    // objects defined into FXML file with fx:id 
-    @FXML
-    private Button buttonClick;
-    @FXML
     private Label labelMessage;
+    @FXML
+    private Button button_init_sesion;
+    @FXML
+    private Button button_registro;
     
     //=========================================================
     // event handler, fired when button is clicked or 
     //                      when the button has the focus and enter is pressed
-    @FXML
     private void handleButtonAction(ActionEvent event) {
         labelMessage.setText("Hello, this is your first JavaFX project - IPC");
     }
