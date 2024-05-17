@@ -12,13 +12,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author jsoler
  */
-public class FXMLDocumentController implements Initializable {
-    private Label labelMessage;
+public class InicioDeSesionController implements Initializable {
     @FXML
     private Button button_init_sesion;
     @FXML
@@ -27,15 +31,25 @@ public class FXMLDocumentController implements Initializable {
     //=========================================================
     // event handler, fired when button is clicked or 
     //                      when the button has the focus and enter is pressed
-    private void handleButtonAction(ActionEvent event) {
-        labelMessage.setText("Hello, this is your first JavaFX project - IPC");
+        @Override
+    public void initialize(URL url, ResourceBundle rb) {
+         button_registro.setOnAction(event -> {
+            try {
+                switchToRegisterScene();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
+    
+    
     
     //=========================================================
     // you must initialize here all related with the object 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
     
+    private void switchToRegisterScene() throws IOException {
+        FXMLLoader cargador = new FXMLLoader(getClass().getResource("CrearCuenta.fxml"));
+        Parent root = cargador.load();
+        JavaFXMLApplication.setRoot(root);
+    }
 }
