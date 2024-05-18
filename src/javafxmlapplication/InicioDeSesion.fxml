@@ -26,9 +26,17 @@
          </children></AnchorPane>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="600.0">
          <children>
-            <VBox layoutX="40.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="378.0" prefWidth="294.0">
+            <VBox layoutX="40.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="434.0" prefWidth="294.0">
                <children>
-                  <Label text="Usuario" />
+                  <Label prefHeight="119.0" prefWidth="294.0" text="Inicio de sesión">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label text="Usuario">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></Label>
                   <TextField />
                   <Label fx:id="aviso_usuario_login" layoutX="10.0" layoutY="10.0" text="Usuario no encontrado" textFill="RED" visible="false">
                      <font>

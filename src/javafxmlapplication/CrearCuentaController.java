@@ -14,7 +14,6 @@ import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -102,6 +101,10 @@ public class CrearCuentaController implements Initializable {
             } catch (IOException | AcountDAOException e) {
                 e.printStackTrace();
             }
+        });
+        
+        añadir_imagen_perfil.setOnAction(event ->{
+            handleLoadImageAction(event);
         });
     };    
     
