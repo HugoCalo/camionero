@@ -27,10 +27,24 @@ public class InicioDeSesionController implements Initializable {
     private Button button_init_sesion;
     @FXML
     private Button button_registro;
+    @FXML
+    private Label aviso_usuario_login;
+    @FXML
+    private Label aviso_password_login;
+    
+    private Stage stage;
     
     //=========================================================
     // event handler, fired when button is clicked or 
     //                      when the button has the focus and enter is pressed
+    
+    
+    public void setStage(Stage stage) {
+        this.stage = stage;
+        this.stage.setResizable(false);  // Evitar que la ventana sea redimensionable
+    }
+    
+    
         @Override
     public void initialize(URL url, ResourceBundle rb) {
          button_registro.setOnAction(event -> {

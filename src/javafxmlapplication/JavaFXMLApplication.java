@@ -24,6 +24,9 @@ public class JavaFXMLApplication extends Application {
         // 1- creación del grafo de escena a partir del fichero FXML
         FXMLLoader loader= new  FXMLLoader(getClass().getResource("InicioDeSesion.fxml"));
         Parent root = loader.load();
+        
+        InicioDeSesionController controlador = loader.getController();
+        controlador.setStage(stage);
         //======================================================================
         // 2- creación de la escena con el nodo raiz del grafo de escena
         scene = new Scene(root);
@@ -34,6 +37,7 @@ public class JavaFXMLApplication extends Application {
         stage.setScene(scene);
         stage.setTitle("Login");
         stage.show();
+        
     }
 
     /**

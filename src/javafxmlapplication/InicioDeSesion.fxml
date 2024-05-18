@@ -3,16 +3,20 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.InicioDeSesionController">
+<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.InicioDeSesionController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -20,22 +24,45 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="211.0">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="600.0">
          <children>
-            <VBox layoutX="30.0" layoutY="78.0" prefHeight="243.0" prefWidth="277.0">
+            <VBox layoutX="40.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="378.0" prefWidth="294.0">
                <children>
                   <Label text="Usuario" />
                   <TextField />
-                  <Label text="Contraseña" />
-                  <TextField />
-                  <Button fx:id="button_init_sesion" mnemonicParsing="false" prefHeight="25.0" prefWidth="369.0" text="Iniciar sesión">
+                  <Label fx:id="aviso_usuario_login" layoutX="10.0" layoutY="10.0" text="Usuario no encontrado" textFill="RED" visible="false">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Contraseña">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></Label>
+                  <PasswordField />
+                  <Label fx:id="aviso_password_login" layoutX="10.0" layoutY="52.0" text="Contraseña incorrecta" textFill="RED" visible="false">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="button_init_sesion" mnemonicParsing="false" prefHeight="35.0" prefWidth="293.0" text="Iniciar sesión">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="button_registro" mnemonicParsing="false" prefHeight="25.0" prefWidth="297.0" text="Crear cuenta">
+                  <Region prefHeight="57.0" prefWidth="294.0" />
+                  <Separator prefWidth="200.0" />
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="47.0" prefWidth="294.0" text="¿No tienes cuenta?">
                      <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="button_registro" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="297.0" text="Regístrate">
+                     <VBox.margin>
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Button>
                </children>
