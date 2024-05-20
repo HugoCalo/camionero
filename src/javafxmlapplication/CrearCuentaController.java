@@ -98,7 +98,6 @@ public class CrearCuentaController implements Initializable {
                     ponerEnBlanco();
                     switchToLoginScene();
                 }
-
             } catch (IOException e) {
 
                 e.printStackTrace();
@@ -186,7 +185,6 @@ public class CrearCuentaController implements Initializable {
     private boolean verificarContrasenas() {
         String password = passwordField.getText();
         String confirmarPassword = confirmar_password.getText();
-
         if (!password.equals(confirmarPassword)) {
             aviso_campo_rep_contrasena.setVisible(true);
             return false;
