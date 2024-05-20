@@ -39,7 +39,7 @@
       </HBox>
    </top>
    <center>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="451.0" prefWidth="654.0" VBox.vgrow="ALWAYS">
                <content>
@@ -60,7 +60,7 @@
       </VBox>
    </center>
    <left>
-      <VBox alignment="CENTER" prefHeight="324.0" prefWidth="251.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="324.0" prefWidth="251.0" BorderPane.alignment="CENTER">
          <children>
             <ToolBar orientation="VERTICAL" prefHeight="328.0" prefWidth="110.0" VBox.vgrow="ALWAYS">
               <items>
