@@ -14,14 +14,13 @@ import javafx.stage.Stage;
 
 public class JavaFXMLApplication extends Application {
     private static Scene scene;
+    private static Stage primaryStage;
     
-    static void setRoot(Parent root){
-        scene.setRoot(root);
-    }
     @Override
     public void start(Stage stage) throws Exception {
         //======================================================================
         // 1- creación del grafo de escena a partir del fichero FXML
+        primaryStage = stage;
         FXMLLoader loader= new  FXMLLoader(getClass().getResource("InicioDeSesion.fxml"));
         Parent root = loader.load();
         
@@ -47,7 +46,13 @@ public class JavaFXMLApplication extends Application {
         launch(args);
         
     }
+     public static void setRoot(Parent root) {
+        scene.setRoot(root);
+    }
 
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
 
     
 }

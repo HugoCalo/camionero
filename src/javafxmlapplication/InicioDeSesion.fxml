@@ -37,12 +37,7 @@
                      <padding>
                         <Insets top="10.0" />
                      </padding></Label>
-                  <TextField />
-                  <Label fx:id="aviso_usuario_login" layoutX="10.0" layoutY="10.0" text="Usuario no encontrado" textFill="RED" visible="false">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </Label>
+                  <TextField fx:id="usernameField" />
                   <Label text="Contraseña">
                      <VBox.margin>
                         <Insets />
@@ -50,7 +45,15 @@
                      <padding>
                         <Insets top="10.0" />
                      </padding></Label>
-                  <PasswordField />
+                  <PasswordField fx:id="passwordField" />
+                  <Label fx:id="aviso_usuario_login" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="294.0" text="Usuario o contraseña incorrectos" textFill="RED">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
                   <Label fx:id="aviso_password_login" layoutX="10.0" layoutY="52.0" text="Contraseña incorrecta" textFill="RED" visible="false">
                      <font>
                         <Font name="System Italic" size="12.0" />
@@ -58,7 +61,7 @@
                   </Label>
                   <Button fx:id="button_init_sesion" mnemonicParsing="false" prefHeight="35.0" prefWidth="293.0" text="Iniciar sesión">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </Button>
                   <Region prefHeight="57.0" prefWidth="294.0" />

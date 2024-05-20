@@ -16,7 +16,12 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.Acount;
+import model.AcountDAOException;
 
 /**
  *
@@ -37,6 +42,10 @@ public class InicioDeSesionController implements Initializable {
     //=========================================================
     // event handler, fired when button is clicked or 
     //                      when the button has the focus and enter is pressed
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
     
     
     public void setStage(Stage stage) {
@@ -47,13 +56,21 @@ public class InicioDeSesionController implements Initializable {
     
         @Override
     public void initialize(URL url, ResourceBundle rb) {
-         button_registro.setOnAction(event -> {
+        aviso_usuario_login.setVisible(false);
+        button_registro.setOnAction(event -> {
             try {
                 switchToRegisterScene();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
+         button_init_sesion.setOnAction(event -> {
+             try{
+             handleLogin(event);
+             }catch (IOException e) {     
+                 e.printStackTrace();
+             }
+         });
     }
     
     
@@ -66,4 +83,43 @@ public class InicioDeSesionController implements Initializable {
         Parent root = cargador.load();
         JavaFXMLApplication.setRoot(root);
     }
+    
+    private void handleLogin(ActionEvent event) throws IOException {
+        aviso_usuario_login.setVisible(false);
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        // Intenta iniciar sesión con las credenciales proporcionadas
+        try{ 
+            boolean cond = Acount.getInstance().logInUserByCredentials(username, password);
+            if(cond){
+            // Si las credenciales son correctas, cambia a la pantalla principal
+            FXMLLoader cargador = new FXMLLoader(getClass().getResource("PantallaDeInicio.fxml"));
+            Parent root = cargador.load();
+            
+            PantallaDeInicioController controlador = cargador.getController();
+            Stage stageInicio = new Stage();
+            stageInicio.setScene(new Scene(root));
+            stageInicio.setTitle("CashSplash");
+            stageInicio.show();
+            
+            controlador.setStageLogin(stage);
+            controlador.setStage(stageInicio);
+
+            stage.hide();
+            }else{aviso_usuario_login.setVisible(true);}
+        } catch(AcountDAOException e) {
+            // Muestra un mensaje de error si las credenciales son incorrectas
+            aviso_usuario_login.setVisible(true);
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+

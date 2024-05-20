@@ -98,7 +98,7 @@ public class CrearCuentaController implements Initializable {
                     ponerEnBlanco();
                     switchToLoginScene();
                 }
-            } catch (IOException | AcountDAOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });
@@ -108,7 +108,8 @@ public class CrearCuentaController implements Initializable {
         });
     };    
     
-    private boolean handleRegisterAction(ActionEvent event) throws AcountDAOException, IOException {
+    private boolean handleRegisterAction(ActionEvent event) throws  IOException {
+       
         ponerAvisosEnBlacnco();
         String name = nameField.getText();
         String surname = surnameField.getText();
@@ -142,23 +143,23 @@ public class CrearCuentaController implements Initializable {
          if (!isValid) {
             return false;
         }
-        
-        boolean isRegistered = Acount.getInstance().registerUser(name, surname, email, nickname, password, profileImage, LocalDate.now());
-        if (isRegistered) {
+        try{
+            Acount.getInstance().registerUser(name, surname, email, nickname, password, profileImage, LocalDate.now());
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Registro Exitoso");
             alert.setHeaderText(null);
             alert.setContentText("¡Usuario registrado exitosamente! Por favor, autentíquese.");
             alert.showAndWait();
             return true;
-        } else {
+        } catch(AcountDAOException e) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error al registrar el usuario");
             alert.setHeaderText(null);
-            alert.setContentText(null);
+            alert.setContentText("EL usuario " + nickname + " ya ha sido registrado previamente");
             alert.showAndWait();
             return false;
         }
+        
     }
      
     
