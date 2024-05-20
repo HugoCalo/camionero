@@ -98,7 +98,9 @@ public class CrearCuentaController implements Initializable {
                     ponerEnBlanco();
                     switchToLoginScene();
                 }
+
             } catch (IOException e) {
+
                 e.printStackTrace();
             }
         });
@@ -108,8 +110,9 @@ public class CrearCuentaController implements Initializable {
         });
     };    
     
-    private boolean handleRegisterAction(ActionEvent event) throws  IOException {
-       
+
+    private boolean handleRegisterAction(ActionEvent event) throws IOException {
+
         ponerAvisosEnBlacnco();
         String name = nameField.getText();
         String surname = surnameField.getText();
@@ -143,6 +146,7 @@ public class CrearCuentaController implements Initializable {
          if (!isValid) {
             return false;
         }
+
         try{
             Acount.getInstance().registerUser(name, surname, email, nickname, password, profileImage, LocalDate.now());
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -151,11 +155,13 @@ public class CrearCuentaController implements Initializable {
             alert.setContentText("¡Usuario registrado exitosamente! Por favor, autentíquese.");
             alert.showAndWait();
             return true;
+
         } catch(AcountDAOException e) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error al registrar el usuario");
             alert.setHeaderText(null);
             alert.setContentText("EL usuario " + nickname + " ya ha sido registrado previamente");
+
             alert.showAndWait();
             return false;
         }
@@ -211,6 +217,7 @@ public class CrearCuentaController implements Initializable {
     private void ponerAvisosEnBlacnco(){
         aviso_campo_nombre.setVisible(false);
         aviso_campo_apellidos.setVisible(false);
+        aviso_campo_usuario.setVisible(false);
         aviso_campo_correo.setVisible(false);
         aviso_campo_contrasena.setVisible(false);
         aviso_campo_rep_contrasena.setVisible(false);

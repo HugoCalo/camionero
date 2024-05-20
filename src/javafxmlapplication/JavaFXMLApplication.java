@@ -16,6 +16,7 @@ public class JavaFXMLApplication extends Application {
     private static Scene scene;
     private static Stage primaryStage;
     
+
     @Override
     public void start(Stage stage) throws Exception {
         //======================================================================
