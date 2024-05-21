@@ -109,6 +109,8 @@ public class InicioDeSesionController implements Initializable {
             controlador.setStage(stageInicio);
 
             stage.hide();
+            usernameField.clear();
+            passwordField.clear();
             }else{aviso_usuario_login.setVisible(true);}
         } catch(AcountDAOException e) {
             // Muestra un mensaje de error si las credenciales son incorrectas

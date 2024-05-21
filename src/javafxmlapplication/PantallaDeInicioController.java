@@ -155,13 +155,16 @@ public class PantallaDeInicioController implements Initializable {
     }
 
     private void handleShowCategory(ActionEvent event) {
-        // Handle show category button click event
-        // Add your logic to show category
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Show Category");
-        alert.setHeaderText(null);
-        alert.setContentText("Showing categories!");
-        alert.showAndWait();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/DesgloseDeGastos/DesgloseDeGastos.fxml"));
+            Parent newSceneParent = loader.load();
+            Scene newScene = new Scene(newSceneParent);
+            Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            currentStage.setScene(newScene);
+            currentStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     }
 
     private void handleAddCategory(ActionEvent event) {

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package DesgloseDeGastos;
+package javafxmlapplication.DesgloseDeGastos;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +32,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafxmlapplication.JavaFXMLApplication;
 import javafxmlapplication.JavaFXMLApplication;
 import model.Acount;
 import model.AcountDAOException;
@@ -98,6 +99,8 @@ public class DesgloseDeGastosController implements Initializable {
             return new ReadOnlyObjectWrapper<>(imageView);
         });
         
+        volverainicio_boton.setDisable(false);
+        volverainicio_boton.setVisible(true);
         
         volverainicio_boton.setOnMouseEntered(event -> {
             Tooltip.install(volverainicio_boton, volverainico_señal); // Mostrar tooltip
@@ -108,8 +111,13 @@ public class DesgloseDeGastosController implements Initializable {
         });
         
         volverainicio_boton.setOnAction(event ->{
-            try{switchToPantallaPrincipal();
-            }catch(IOException e){}
+         System.out.println("Cambiando a Pantalla Principal");
+            try{
+                switchToPantallaPrincipal();
+            }catch(IOException e){
+                 e.printStackTrace();
+
+            }
         });
         
         tableview_gastos_cat.setRowFactory(tv -> {
@@ -171,7 +179,7 @@ public class DesgloseDeGastosController implements Initializable {
     }    
     
     private void switchToPantallaPrincipal()throws IOException{
-        FXMLLoader cargador = new FXMLLoader(getClass().getResource("PantallaPrincipal"));
+        FXMLLoader cargador = new FXMLLoader(getClass().getResource("/javafxmlapplication/PantallaDeInicio.fxml"));
         Parent root = cargador.load();
         JavaFXMLApplication.setRoot(root);
     }
