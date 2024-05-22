@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.CompararMeses.CompararMesesController">
+   <top>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="128.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../OneDrive/Pictures/20210405_152242~2.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="150.0" prefWidth="728.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label prefHeight="150.0" prefWidth="285.0" text="Comparar gastos" textAlignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="20.0" />
+               </HBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="410.0" prefWidth="372.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="410.0" prefWidth="376.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="73.0" prefWidth="372.0">
+                           <children>
+                              <Label prefHeight="65.0" prefWidth="362.0" text="Comparar los gastos de dos meses diferentes" wrapText="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding></Label>
+                           </children>
+                        </HBox>
+                        <Label prefHeight="34.0" prefWidth="47.0" text="Mes 1:">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                        <DatePicker prefHeight="25.0" prefWidth="252.0" />
+                        <Label prefHeight="32.0" prefWidth="47.0" text="Mes 2:">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                        <DatePicker prefHeight="25.0" prefWidth="254.0" />
+                     </children>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </HBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <HBox alignment="CENTER" prefHeight="410.0" prefWidth="401.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="410.0" prefWidth="386.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="381.0">
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="352.0" text="Comparar los gastos de el mismo mes de dos años diferentes" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin></Label>
+                           </children>
+                        </HBox>
+                        <Label prefHeight="43.0" prefWidth="79.0" text="Mes:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <DatePicker prefHeight="25.0" prefWidth="247.0" />
+                        <Label prefHeight="36.0" prefWidth="71.0" text="Año:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <DatePicker prefHeight="25.0" prefWidth="245.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

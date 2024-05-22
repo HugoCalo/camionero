@@ -123,7 +123,6 @@ public class DesgloseDeGastosController implements Initializable {
         });
         
         volverainicio_boton.setOnAction(event ->{
-         System.out.println("Cambiando a Pantalla Principal");
             try{
                 switchToPantallaPrincipal(event);
             }catch(IOException e){
@@ -190,6 +189,7 @@ public class DesgloseDeGastosController implements Initializable {
 
     }    
     
+
     private void switchToPantallaPrincipal(ActionEvent event) throws IOException {
         FXMLLoader cargador = new FXMLLoader(getClass().getResource("/javafxmlapplication/PantallaDeInicio.fxml"));
         Parent root = cargador.load();
@@ -202,6 +202,7 @@ public class DesgloseDeGastosController implements Initializable {
         PantallaDeInicioController controller = cargador.getController();
         controller.setStage(currentStage);
         controller.setStageLogin(loginStage);
+
     }
     
     public void setCategory(String categoryName) throws AcountDAOException, IOException {
