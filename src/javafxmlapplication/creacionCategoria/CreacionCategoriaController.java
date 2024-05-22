@@ -1,0 +1,93 @@
+package javafxmlapplication.creacionCategoria;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.Acount;
+import model.AcountDAOException;
+import model.Category;
+
+/**
+ * FXML Controller class
+ *
+ * @author hugoc
+ */
+public class CreacionCategoriaController implements Initializable {
+
+    @FXML
+    private TextField nombreCategoria;
+    @FXML
+    private TextField descripcionCategoria;
+    @FXML
+    private Button botonAceptar;
+    @FXML
+    private Button botonCancelar;
+
+    private Stage stage;
+    private ObservableList<Category> categoryList;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        botonAceptar.setOnAction(event -> {
+            try {
+                handleAceptar();
+            } catch (AcountDAOException ex) {
+                Logger.getLogger(CreacionCategoriaController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(CreacionCategoriaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        botonCancelar.setOnAction(event -> handleCancelar());
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setCategoryList(ObservableList<Category> categoryList) {
+        this.categoryList = categoryList;
+    }
+
+    private void handleAceptar() throws AcountDAOException, IOException {
+        String name = nombreCategoria.getText();
+        String description = descripcionCategoria.getText();
+
+        if (!name.isEmpty() && !description.isEmpty()) {
+            boolean success = Acount.getInstance().registerCategory(name, description);
+            if (success) {
+                // Obtenemos la lista actualizada de categorías desde Acount
+                categoryList.setAll(Acount.getInstance().getUserCategories());
+                stage.close(); // Cerrar ventana
+            } else {
+                // Manejar error en registro de categoría
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error al crear la categoría");
+                alert.setContentText("No se pudo crear la categoría. Inténtalo de nuevo.");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Campos vacíos");
+            alert.setHeaderText("Campos requeridos");
+            alert.setContentText("Por favor, rellena todos los campos.");
+            alert.showAndWait();
+        }
+    }
+
+    private void handleCancelar() {
+        stage.close();
+    }
+}

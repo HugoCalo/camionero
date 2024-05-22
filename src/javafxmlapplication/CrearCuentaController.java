@@ -19,6 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.Acount;
 import model.AcountDAOException;
+import model.User;
 
 public class CrearCuentaController implements Initializable {
 
@@ -29,8 +30,7 @@ public class CrearCuentaController implements Initializable {
     @FXML private TextField emailField;
     @FXML private ImageView profileImageView;
     @FXML private Button registerButton;
-    @FXML private Label messageLabel;
-    @FXML private Image profileImage;
+    private Image profileImage;
     @FXML private Label aviso_campo_nombre;
     @FXML private Label aviso_campo_apellidos;
     @FXML private Label aviso_campo_usuario;
@@ -42,9 +42,16 @@ public class CrearCuentaController implements Initializable {
     @FXML private Button cancelar_registro_boton;
 
     private Stage loginStage;
+    private Stage stage;
+    @FXML
+    private Label titulin;
 
     public void setLoginStage(Stage loginStage) {
         this.loginStage = loginStage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     @Override
@@ -171,6 +178,7 @@ public class CrearCuentaController implements Initializable {
         passwordField.clear();
         confirmar_password.clear();
         emailField.clear();
+        nicknameField.clear();
         profileImageView.setImage(null);
         ponerAvisosEnBlanco();
     }
@@ -190,5 +198,58 @@ public class CrearCuentaController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(contenido);
         alert.showAndWait();
+    }
+
+    // Método para configurar la pantalla en modo edición de perfil
+    public void setEditProfileMode() throws AcountDAOException, IOException {
+        User user = Acount.getInstance().getLoggedUser();
+
+        nameField.setText(user.getName());
+        surnameField.setText(user.getSurname());
+        emailField.setText(user.getEmail());
+        nicknameField.setText(user.getNickName());
+        nicknameField.setDisable(true); // No se puede modificar el nickname
+        passwordField.setText(user.getPassword());
+        confirmar_password.setText(user.getPassword());
+        profileImageView.setImage(user.getImage());
+        
+        titulin.setText("Modificar perfil");
+        registerButton.setText("Guardar Cambios");
+        registerButton.setOnAction(event -> {
+            try {
+                if (handleUpdateProfileAction(event)) {
+                    ponerEnBlanco();
+                    stage.close();
+                    switchToLoginScene();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private boolean handleUpdateProfileAction(ActionEvent event) throws IOException {
+        ponerAvisosEnBlanco();
+        if (!validarCampos()) return false;
+
+        String name = nameField.getText();
+        String surname = surnameField.getText();
+        String email = emailField.getText();
+        String password = passwordField.getText();
+
+        try {
+            User user = Acount.getInstance().getLoggedUser();
+            user.setName(name);
+            user.setSurname(surname);
+            user.setEmail(email);
+            user.setPassword(password);
+            user.setImage(profileImage);
+
+            
+            return true;
+        } catch (AcountDAOException e) {
+            mostrarAlerta(AlertType.ERROR, "Error al actualizar el perfil", "Ocurrió un error al intentar actualizar el perfil");
+            return false;
+        }
     }
 }
