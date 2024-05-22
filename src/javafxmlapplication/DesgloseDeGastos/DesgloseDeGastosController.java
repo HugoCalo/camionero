@@ -16,6 +16,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,6 +35,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafxmlapplication.JavaFXMLApplication;
 import javafxmlapplication.JavaFXMLApplication;
+import javafxmlapplication.PantallaDeInicioController;
 import model.Acount;
 import model.AcountDAOException;
 import model.Category;
@@ -45,7 +47,10 @@ import model.Charge;
  * @author Alex
  */
 public class DesgloseDeGastosController implements Initializable {
-
+    
+    private Stage stage;
+    private Stage loginStage;
+    
     @FXML
     private Button volverainicio_boton;
     @FXML
@@ -84,6 +89,13 @@ public class DesgloseDeGastosController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setLoginStage(Stage loginStage) {
+        this.loginStage = loginStage;
+    }
     
     public void initialize(URL url, ResourceBundle rb) {
         modificar_gasto_boton.setDisable(true);
@@ -113,7 +125,7 @@ public class DesgloseDeGastosController implements Initializable {
         volverainicio_boton.setOnAction(event ->{
          System.out.println("Cambiando a Pantalla Principal");
             try{
-                switchToPantallaPrincipal();
+                switchToPantallaPrincipal(event);
             }catch(IOException e){
                  e.printStackTrace();
 
@@ -178,10 +190,18 @@ public class DesgloseDeGastosController implements Initializable {
 
     }    
     
-    private void switchToPantallaPrincipal()throws IOException{
+    private void switchToPantallaPrincipal(ActionEvent event) throws IOException {
         FXMLLoader cargador = new FXMLLoader(getClass().getResource("/javafxmlapplication/PantallaDeInicio.fxml"));
         Parent root = cargador.load();
-        JavaFXMLApplication.setRoot(root);
+        Scene newScene = new Scene(root);
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        currentStage.setScene(newScene);
+        currentStage.show();
+
+        // Pasa los stages al controlador de PantallaDeInicio
+        PantallaDeInicioController controller = cargador.getController();
+        controller.setStage(currentStage);
+        controller.setStageLogin(loginStage);
     }
     
     public void setCategory(String categoryName) throws AcountDAOException, IOException {
