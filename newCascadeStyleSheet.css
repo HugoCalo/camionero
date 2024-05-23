@@ -1,0 +1,58 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 23 may 2024, 18:11:33
+    Author     : hugoc
+*/
+
+/* styles.css */
+
+/* Estilo para la raíz */
+.root {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+}
+
+/* Estilo para botones */
+.button {
+    -fx-background-color: #ff6600;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+}
+
+/* Estilo para campos de texto */
+.text-field {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ff6600;
+    -fx-border-width: 1px;
+}
+
+/* Estilo para etiquetas */
+.label {
+    -fx-text-fill: #ff6600;
+    -fx-font-size: 14px;
+}
+
+/* Estilo para tablas */
+.table-view {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #ff6600;
+}
+
+.table-view .table-cell {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+}
+
+/* Estilo para contenedores VBox y HBox */
+.vbox, .hbox {
+    -fx-spacing: 10px;
+}

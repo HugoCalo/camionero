@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/PantallaDeInicioController.java</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/CompararMeses/CompararMesesController.java</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/CompararMeses/CompararMeses.fxml</file>
             <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/CrearCuentaController.java</file>
-            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/creacionCategoria/creacionCategoria.fxml</file>
-            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/creacionCategoria/CreacionCategoriaController.java</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/DesgloseDeGastos/DesgloseDeGastosController.java</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/DesgloseDeGastos/DesgloseDeGastos.fxml</file>
         </group>
     </open-files>
 </project-private>

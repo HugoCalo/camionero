@@ -27,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafxmlapplication.CompararMeses.CompararMesesController;
 import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;
 import javafxmlapplication.creacionCategoria.CreacionCategoriaController;
 import model.Acount;
@@ -36,7 +37,6 @@ import model.AcountDAOException;
 /**
  * FXML Controller class
  *
- * @author hugoc
  */
 public class PantallaDeInicioController implements Initializable {
 
@@ -158,33 +158,46 @@ public class PantallaDeInicioController implements Initializable {
         alert.showAndWait();
     }
 
-    private void handleCompareMonth(ActionEvent event) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Compare Month");
-        alert.setHeaderText(null);
-        alert.setContentText("Comparing months!");
-        alert.showAndWait();
-    }
-
-    private void handleShowProfile(ActionEvent event) throws AcountDAOException {
+private void handleCompareMonth(ActionEvent event) {
     try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CrearCuenta.fxml"));
-        Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CompararMeses/CompararMeses.fxml"));
+        Parent newSceneParent = loader.load();
+        
+        // Obtener el controlador de la nueva escena
+        CompararMesesController controller = loader.getController();
+        
+        // Configurar las propiedades necesarias en el controlador
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        controller.setStage(currentStage);
 
-        CrearCuentaController controller = loader.getController();
-        controller.setLoginStage(loginStage);
-        controller.setEditProfileMode(); // Método nuevo para configurar la pantalla para editar perfil
-
-        Stage stage = new Stage();
-        stage.setTitle("Modificar Perfil");
-        stage.setScene(new Scene(root));
-        controller.setStage(stage);
-        stage.show();
-    } catch (IOException ex) {
-        Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        // Cambiar a la nueva escena
+        Scene newScene = new Scene(newSceneParent);
+        currentStage.setScene(newScene);
+        currentStage.show();
+    } catch (IOException e) {
+        Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, e);
     }
 }
 
+
+    private void handleShowProfile(ActionEvent event) throws AcountDAOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CrearCuenta.fxml"));
+            Parent root = loader.load();
+
+            CrearCuentaController controller = loader.getController();
+            controller.setLoginStage(loginStage);
+            controller.setEditProfileMode(); // Método nuevo para configurar la pantalla para editar perfil
+
+            Stage stage = new Stage();
+            stage.setTitle("Modificar Perfil");
+            stage.setScene(new Scene(root));
+            controller.setStage(stage);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void handleAddCost(ActionEvent event) {
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -194,7 +207,7 @@ public class PantallaDeInicioController implements Initializable {
         alert.showAndWait();
     }
 
- private void handleShowGastosDeCategoria(ActionEvent event) {
+    private void handleShowGastosDeCategoria(ActionEvent event) {
         Category selectedCategory = tableview_category.getSelectionModel().getSelectedItem();
         if (selectedCategory != null) {
             try {

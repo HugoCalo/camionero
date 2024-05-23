@@ -15,7 +15,9 @@ public class JavaFXMLApplication extends Application {
         primaryStage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InicioDeSesion.fxml"));
         Parent root = loader.load();
-
+        
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        
         InicioDeSesionController controlador = loader.getController();
         controlador.setStage(stage); // Asegúrate de que el stage se inicializa aquí
 
