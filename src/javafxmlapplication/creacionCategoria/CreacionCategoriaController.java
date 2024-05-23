@@ -81,6 +81,15 @@ public class CreacionCategoriaController implements Initializable {
         String description = descripcionCategoria.getText();
 
         if (!name.isEmpty() && !description.isEmpty()) {
+            if (isCategoryDuplicate(name)) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Categoría duplicada");
+                alert.setHeaderText("La categoría ya existe");
+                alert.setContentText("Por favor, elige un nombre diferente para la categoría.");
+                alert.showAndWait();
+                return;
+            }
+
             boolean success = Acount.getInstance().registerCategory(name, description);
             if (success) {
                 // Obtenemos la lista actualizada de categorías desde Acount
@@ -102,6 +111,15 @@ public class CreacionCategoriaController implements Initializable {
             alert.setContentText("Por favor, rellena todos los campos.");
             alert.showAndWait();
         }
+    }
+
+    private boolean isCategoryDuplicate(String name) {
+        for (Category category : categoryList) {
+            if (category.getName().equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void handleCancelar() {
