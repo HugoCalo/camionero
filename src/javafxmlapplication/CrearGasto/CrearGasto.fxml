@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.CrearGasto.CrearGastoController">
+   <center>
+      <VBox prefHeight="250.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="238.0" prefWidth="600.0">
+               <children>
+                  <VBox alignment="CENTER_LEFT" prefHeight="238.0" prefWidth="220.0">
+                     <children>
+                        <Label text="Nombre de la categoría">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nombreGasto" prefHeight="25.0" prefWidth="167.0" promptText="nombreGasto">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></TextField>
+                        <HBox>
+                           <children>
+                              <Label text="Coste">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="125.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label text="Unidades">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <TextField fx:id="costeGasto_campo" prefHeight="25.0" prefWidth="138.0" promptText="€" />
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="25.0" prefWidth="33.0" text="X">
+                                 <padding>
+                                    <Insets right="6.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="Unidades_campo" prefHeight="25.0" prefWidth="68.0" />
+                           </children>
+                        </HBox>
+                        <Label text="Descripción">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="descripcionGasto_campo" prefHeight="86.0" prefWidth="180.0" promptText="DescripcionGasto" />
+                     </children>
+                  </VBox>
+                  <Region prefHeight="238.0" prefWidth="60.0" />
+                  <VBox prefHeight="238.0" prefWidth="195.0">
+                     <children>
+                        <Label fx:id="fecha" alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="17.0" prefWidth="233.0" text="17/05/03">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="219.0" text="Añadir recibo" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="144.0">
+                           <children>
+                              <Button fx:id="anadirRecibo_boton" mnemonicParsing="false" text="+" />
+                           </children>
+                        </HBox>
+                        <ImageView fx:id="anadirRecibo_imagen" fitHeight="127.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="384.0" text="Creación de gasto">
+               <font>
+                  <Font size="37.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="botonAceptar" mnemonicParsing="false" prefHeight="32.0" prefWidth="72.0" text="aceptar" />
+            <Button fx:id="botonCancelar" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" text="cancelar">
+               <HBox.margin>
+                  <Insets left="30.0" right="40.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets bottom="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+</BorderPane>

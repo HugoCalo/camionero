@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -27,11 +26,7 @@
                <children>
                   <Button fx:id="volverainicio_boton" mnemonicParsing="false" HBox.hgrow="ALWAYS">
                      <graphic>
-                        <ImageView fitHeight="103.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../OneDrive/Pictures/20210405_152242~2.jpg" />
-                           </image>
-                        </ImageView>
+                        <ImageView fitHeight="103.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                      <tooltip>
                         <Tooltip fx:id="volverainico_señal" text="Ir a la página de inicio" />
@@ -87,7 +82,7 @@
                   <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="52.0" prefWidth="360.0" HBox.hgrow="ALWAYS">
                     <items>
                         <Region layoutX="114.0" layoutY="10.0" prefHeight="42.0" prefWidth="3.0" />
-                      <Button fx:id="añadir_gasto_boton" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Añadir gasto" />
+                      <Button fx:id="anadir_gasto_boton" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Añadir gasto" />
                         <Region prefHeight="42.0" prefWidth="10.0" />
                         <Button fx:id="modificar_gasto_boton" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Modificar gasto" />
                         <Region prefHeight="42.0" prefWidth="10.0" />
@@ -111,6 +106,7 @@
                         <TableColumn fx:id="costColumn" prefWidth="75.0" text="coste" />
                         <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="descripción" />
                         <TableColumn fx:id="reciboColumn" prefWidth="75.0" text="recibo" />
+                        <TableColumn fx:id="unitsColumn" prefWidth="75.0" text="unidades" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +28,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafxmlapplication.CrearGasto.CrearGastoController;
 import javafxmlapplication.PantallaDeInicioController;
 import model.Acount;
 import model.AcountDAOException;
@@ -45,7 +45,7 @@ public class DesgloseDeGastosController implements Initializable {
     @FXML
     private Tooltip volverainico_señal;
     @FXML
-    private Button añadir_gasto_boton;
+    private Button anadir_gasto_boton;
     @FXML
     private Button modificar_gasto_boton;
     @FXML
@@ -62,6 +62,8 @@ public class DesgloseDeGastosController implements Initializable {
     private TableColumn<Charge, Double> costColumn;
     @FXML
     private TableColumn<Charge, String> descriptionColumn;
+    @FXML
+    private TableColumn<Charge, Integer> unitsColumn;
     @FXML
     private TableColumn<Charge, ImageView> reciboColumn;
 
@@ -95,6 +97,7 @@ public class DesgloseDeGastosController implements Initializable {
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        unitsColumn.setCellValueFactory(new PropertyValueFactory<>("units"));
         reciboColumn.setCellValueFactory(cellData -> {
             ImageView imageView = new ImageView(cellData.getValue().getImageScan());
             imageView.setFitHeight(50);
@@ -139,7 +142,7 @@ public class DesgloseDeGastosController implements Initializable {
             }
         });
 
-        añadir_gasto_boton.setOnAction(event -> añadirGasto());
+        anadir_gasto_boton.setOnAction(event -> anadirGasto());
         modificar_gasto_boton.setOnAction(event -> modificarGasto(selectedCharge));
     }
 
@@ -173,8 +176,21 @@ public class DesgloseDeGastosController implements Initializable {
                 .collect(Collectors.toList());
     }
 
-    private void añadirGasto() {
-        // Implement the logic to add a new charge
+    private void anadirGasto() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CrearGasto/CrearGasto.fxml"));
+            Parent root = loader.load();
+            CrearGastoController controller = loader.getController();
+            Stage newStage = new Stage();
+            newStage.setTitle("Añadir Gasto");
+            newStage.setScene(new Scene(root));
+            controller.setStage(newStage);
+            controller.setCategory(category);
+            controller.setChargeList(chargesList);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void modificarGasto(Charge charge) {
