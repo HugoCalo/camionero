@@ -112,7 +112,7 @@ public class PantallaDeInicioController implements Initializable {
         });
         log_out.setOnAction(event -> handleLogOut(event));
         add_cost.setOnAction(event -> handleAddCost(event));
-        show_category.setOnAction(event -> handleShowCategory(event));
+        show_category.setOnAction(event -> handleShowGastosDeCategoria(event));
         add_category.setOnAction(event -> handleAddCategory(event));
         modify_category.setOnAction(event -> handleModifyCategory(event));
         delete_category.setOnAction(event -> handleDeleteCategory(event));
@@ -194,19 +194,31 @@ public class PantallaDeInicioController implements Initializable {
         alert.showAndWait();
     }
 
-    private void handleShowCategory(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/DesgloseDeGastos/DesgloseDeGastos.fxml"));
-            Parent newSceneParent = loader.load();
-            Scene newScene = new Scene(newSceneParent);
-            Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            currentStage.setScene(newScene);
-            currentStage.show();
-            DesgloseDeGastosController controller = loader.getController();
-            controller.setStage(currentStage);
-            controller.setLoginStage(loginStage);
-        } catch (IOException e) {
-            e.printStackTrace();
+ private void handleShowGastosDeCategoria(ActionEvent event) {
+        Category selectedCategory = tableview_category.getSelectionModel().getSelectedItem();
+        if (selectedCategory != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/DesgloseDeGastos/DesgloseDeGastos.fxml"));
+                Parent newSceneParent = loader.load();
+                Scene newScene = new Scene(newSceneParent);
+                Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                currentStage.setScene(newScene);
+                currentStage.show();
+
+                DesgloseDeGastosController controller = loader.getController();
+                controller.setStage(currentStage);
+                controller.setLoginStage(loginStage);
+                controller.setCategory(selectedCategory);
+
+            } catch (IOException | AcountDAOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Visualizar Gastos de Categoría");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona una categoría para ver sus gastos.");
+            alert.showAndWait();
         }
     }
 

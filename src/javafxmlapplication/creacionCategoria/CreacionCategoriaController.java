@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Acount;
 import model.AcountDAOException;
@@ -40,6 +41,15 @@ public class CreacionCategoriaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        botonAceptar.setDisable(true);
+        nombreCategoria.setOnAction(event -> descripcionCategoria.requestFocus());
+        descripcionCategoria.setOnAction(event -> botonAceptar.requestFocus());
+        
+        nombreCategoria.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
+        descripcionCategoria.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
+
+        nombreCategoria.setOnAction(event -> descripcionCategoria.requestFocus());
+        descripcionCategoria.setOnAction(event -> botonAceptar.requestFocus());
         botonAceptar.setOnAction(event -> {
             try {
                 handleAceptar();
@@ -54,10 +64,16 @@ public class CreacionCategoriaController implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        this.stage.setResizable(false);
+        this.stage.initModality(Modality.APPLICATION_MODAL);
     }
 
     public void setCategoryList(ObservableList<Category> categoryList) {
         this.categoryList = categoryList;
+    }
+    private void validateFields() {
+        boolean disableButton = nombreCategoria.getText().trim().isEmpty() || descripcionCategoria.getText().trim().isEmpty();
+        botonAceptar.setDisable(disableButton);
     }
 
     private void handleAceptar() throws AcountDAOException, IOException {
@@ -79,6 +95,7 @@ public class CreacionCategoriaController implements Initializable {
                 alert.showAndWait();
             }
         } else {
+            
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Campos vacíos");
             alert.setHeaderText("Campos requeridos");

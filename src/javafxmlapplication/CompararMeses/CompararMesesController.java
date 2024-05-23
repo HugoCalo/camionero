@@ -6,7 +6,10 @@ package javafxmlapplication.CompararMeses;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 
 /**
  * FXML Controller class
@@ -14,6 +17,17 @@ import javafx.fxml.Initializable;
  * @author Alex
  */
 public class CompararMesesController implements Initializable {
+
+    @FXML
+    private Button volvera_pantalla_inicio;
+    @FXML
+    private DatePicker comp_meses_mes1;
+    @FXML
+    private DatePicker comp_meses_mes2;
+    @FXML
+    private DatePicker comp_año_mes;
+    @FXML
+    private DatePicker comp_año_año;
 
     /**
      * Initializes the controller class.

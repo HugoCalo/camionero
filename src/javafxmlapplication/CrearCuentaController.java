@@ -45,6 +45,8 @@ public class CrearCuentaController implements Initializable {
     private Stage stage;
     @FXML
     private Label titulin;
+    
+    private boolean isEditProfileMode = false; // Flag to check if in edit profile mode
 
     public void setLoginStage(Stage loginStage) {
         this.loginStage = loginStage;
@@ -72,19 +74,31 @@ public class CrearCuentaController implements Initializable {
 
     private void setupButtonActions() {
         cancelar_registro_boton.setOnAction(event -> {
-            try {
-                ponerEnBlanco();
-                switchToLoginScene();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (isEditProfileMode) {
+                stage.close(); // Close the stage if in edit profile mode
+            } else {
+                try {
+                    ponerEnBlanco();
+                    switchToLoginScene();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         registerButton.setOnAction(event -> {
             try {
-                if (handleRegisterAction(event)) {
-                    ponerEnBlanco();
-                    switchToLoginScene();
+                if (isEditProfileMode) {
+                    if (handleUpdateProfileAction(event)) {
+                        ponerEnBlanco();
+                        stage.close();
+                        switchToLoginScene();
+                    }
+                } else {
+                    if (handleRegisterAction(event)) {
+                        ponerEnBlanco();
+                        switchToLoginScene();
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -202,6 +216,7 @@ public class CrearCuentaController implements Initializable {
 
     // Método para configurar la pantalla en modo edición de perfil
     public void setEditProfileMode() throws AcountDAOException, IOException {
+        isEditProfileMode = true; // Set the flag to indicate edit profile mode
         User user = Acount.getInstance().getLoggedUser();
 
         nameField.setText(user.getName());
@@ -212,20 +227,9 @@ public class CrearCuentaController implements Initializable {
         passwordField.setText(user.getPassword());
         confirmar_password.setText(user.getPassword());
         profileImageView.setImage(user.getImage());
-        
+
         titulin.setText("Modificar perfil");
         registerButton.setText("Guardar Cambios");
-        registerButton.setOnAction(event -> {
-            try {
-                if (handleUpdateProfileAction(event)) {
-                    ponerEnBlanco();
-                    stage.close();
-                    switchToLoginScene();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
     private boolean handleUpdateProfileAction(ActionEvent event) throws IOException {
@@ -245,7 +249,6 @@ public class CrearCuentaController implements Initializable {
             user.setPassword(password);
             user.setImage(profileImage);
 
-            
             return true;
         } catch (AcountDAOException e) {
             mostrarAlerta(AlertType.ERROR, "Error al actualizar el perfil", "Ocurrió un error al intentar actualizar el perfil");

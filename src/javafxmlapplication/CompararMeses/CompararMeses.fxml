@@ -16,7 +16,7 @@
    <top>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false">
+            <Button fx:id="volvera_pantalla_inicio" mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="128.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -34,7 +34,7 @@
                   </Label>
                </children>
                <HBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="20.0" right="130.0" />
                </HBox.margin>
             </HBox>
          </children>
@@ -68,12 +68,17 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <DatePicker prefHeight="25.0" prefWidth="252.0" />
+                        <DatePicker fx:id="comp_meses_mes1" prefHeight="25.0" prefWidth="252.0" />
                         <Label prefHeight="32.0" prefWidth="47.0" text="Mes 2:">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <DatePicker prefHeight="25.0" prefWidth="254.0" />
+                        <DatePicker fx:id="comp_meses_mes2" prefHeight="25.0" prefWidth="254.0" />
+                        <Button fx:id="comp_mes_button" mnemonicParsing="false" text="Comparar">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                   </VBox>
                </children>
@@ -97,18 +102,23 @@
                                  </HBox.margin></Label>
                            </children>
                         </HBox>
-                        <Label prefHeight="43.0" prefWidth="79.0" text="Mes:">
+                        <Label prefHeight="43.0" prefWidth="38.0" text="Mes:">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <DatePicker prefHeight="25.0" prefWidth="247.0" />
-                        <Label prefHeight="36.0" prefWidth="71.0" text="Año:">
+                        <DatePicker fx:id="comp_año_mes" prefHeight="25.0" prefWidth="247.0" />
+                        <Label prefHeight="36.0" prefWidth="37.0" text="Año:">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <DatePicker prefHeight="25.0" prefWidth="245.0" />
+                        <DatePicker fx:id="comp_año_año" prefHeight="25.0" prefWidth="245.0" />
+                        <Button fx:id="comp_año_button" mnemonicParsing="false" text="Comparar">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                      <HBox.margin>
                         <Insets left="10.0" right="20.0" />

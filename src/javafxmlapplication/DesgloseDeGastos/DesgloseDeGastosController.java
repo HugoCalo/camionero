@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package javafxmlapplication.DesgloseDeGastos;
 
 import java.io.IOException;
@@ -22,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -30,35 +27,23 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafxmlapplication.JavaFXMLApplication;
-import javafxmlapplication.JavaFXMLApplication;
 import javafxmlapplication.PantallaDeInicioController;
 import model.Acount;
 import model.AcountDAOException;
 import model.Category;
 import model.Charge;
 
-/**
- * FXML Controller class
- *
- * @author Alex
- */
 public class DesgloseDeGastosController implements Initializable {
-    
+
     private Stage stage;
     private Stage loginStage;
-    
+
     @FXML
     private Button volverainicio_boton;
     @FXML
     private Tooltip volverainico_señal;
-    @FXML
-    private Label nombre_categoria_letra;
-    @FXML
-    private Label descripcion_categoria_letra;
     @FXML
     private Button añadir_gasto_boton;
     @FXML
@@ -79,16 +64,15 @@ public class DesgloseDeGastosController implements Initializable {
     private TableColumn<Charge, String> descriptionColumn;
     @FXML
     private TableColumn<Charge, ImageView> reciboColumn;
-    
-    private ObservableList<Charge> chargesList;
-    
-    private String category;
-    
-    private Charge selectedCharge;
 
-    /**
-     * Initializes the controller class.
-     */
+    private ObservableList<Charge> chargesList;
+    private Category category;
+    private Charge selectedCharge;
+    @FXML
+    private Label nombre_categoria_letra;
+    @FXML
+    private Label descripcion_categoria_letra;
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -96,176 +80,125 @@ public class DesgloseDeGastosController implements Initializable {
     public void setLoginStage(Stage loginStage) {
         this.loginStage = loginStage;
     }
-    
+
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-        modificar_gasto_boton.setDisable(true);
-        eliminar_gasto_boton.setDisable(true);
+        try {
+            category = Acount.getInstance().getUserCategories().get(0); // Assuming the first category is selected by default
+            chargesList = FXCollections.observableArrayList(getChargesByCategory(category.getName()));
+        } catch (AcountDAOException | IOException ex) {
+            Logger.getLogger(DesgloseDeGastosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        tableview_gastos_cat.setItems(chargesList);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         reciboColumn.setCellValueFactory(cellData -> {
             ImageView imageView = new ImageView(cellData.getValue().getImageScan());
-            imageView.setFitHeight(50);  // Altura de la imagen
-            imageView.setPreserveRatio(true);  // Mantener relación de aspecto
+            imageView.setFitHeight(50);
+            imageView.setPreserveRatio(true);
             return new ReadOnlyObjectWrapper<>(imageView);
         });
-        
+
         volverainicio_boton.setDisable(false);
         volverainicio_boton.setVisible(true);
-        
-        volverainicio_boton.setOnMouseEntered(event -> {
-            Tooltip.install(volverainicio_boton, volverainico_señal); // Mostrar tooltip
-        });
+        volverainicio_boton.setOnMouseEntered(event -> Tooltip.install(volverainicio_boton, volverainico_señal));
+        volverainicio_boton.setOnMouseExited(event -> Tooltip.uninstall(volverainicio_boton, volverainico_señal));
+        volverainicio_boton.setOnAction(event -> switchToPantallaPrincipal(event));
 
-        volverainicio_boton.setOnMouseExited(event -> {
-            Tooltip.uninstall(volverainicio_boton, volverainico_señal); // Ocultar tooltip
-        });
-        
-        volverainicio_boton.setOnAction(event ->{
-            try{
-                switchToPantallaPrincipal(event);
-            }catch(IOException e){
-                 e.printStackTrace();
-
-            }
-        });
-        
         tableview_gastos_cat.setRowFactory(tv -> {
             TableRow<Charge> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty()) {
-                    if (row.isSelected()) {
-                        tableview_gastos_cat.getSelectionModel().clearSelection(row.getIndex());
-                        selectedCharge = null;
-                    } else {
-                        tableview_gastos_cat.getSelectionModel().select(row.getIndex());
-                        selectedCharge = row.getItem();
-                    }
+                    selectedCharge = row.isSelected() ? null : row.getItem();
+                    tableview_gastos_cat.getSelectionModel().clearSelection(row.getIndex());
                 }
             });
             return row;
         });
-        
-        // Listener para la selección de filas en la tabla
+
         tableview_gastos_cat.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 modificar_gasto_boton.setDisable(false);
                 eliminar_gasto_boton.setDisable(false);
+                selectedCharge = newSelection;
             } else {
                 modificar_gasto_boton.setDisable(true);
                 eliminar_gasto_boton.setDisable(true);
                 selectedCharge = null;
             }
         });
-        
-        chargesList = FXCollections.observableArrayList();
-        chargesList.addListener((ListChangeListener<Charge>) change -> {
-            while (change.next()) {
-                if (change.wasAdded() || change.wasRemoved() || change.wasUpdated()) {
-                    tableview_gastos_cat.refresh();
-                }
-            }
-        });
-        
+
         eliminar_gasto_boton.setOnAction(event -> {
             try {
                 eliminarGasto(selectedCharge);
-            } catch (IOException e) {
+            } catch (IOException | AcountDAOException e) {
                 e.printStackTrace();
-            } catch (AcountDAOException ex) {
-                Logger.getLogger(DesgloseDeGastosController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        añadir_gasto_boton.setOnAction(event -> {
-            añadirGasto();
-            
-        });
-        
-        modificar_gasto_boton.setOnAction(event ->{
-            modificarGasto(selectedCharge);
-        });
 
-
-    }    
-    
-
-    private void switchToPantallaPrincipal(ActionEvent event) throws IOException {
-        FXMLLoader cargador = new FXMLLoader(getClass().getResource("/javafxmlapplication/PantallaDeInicio.fxml"));
-        Parent root = cargador.load();
-        Scene newScene = new Scene(root);
-        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        currentStage.setScene(newScene);
-        currentStage.show();
-
-        // Pasa los stages al controlador de PantallaDeInicio
-        PantallaDeInicioController controller = cargador.getController();
-        controller.setStage(currentStage);
-        controller.setStageLogin(loginStage);
-
+        añadir_gasto_boton.setOnAction(event -> añadirGasto());
+        modificar_gasto_boton.setOnAction(event -> modificarGasto(selectedCharge));
     }
-    
-    public void setCategory(String categoryName) throws AcountDAOException, IOException {
-        category = categoryName;
-        chargesList = FXCollections.observableArrayList(getChargesByCategory(category));
+
+    private void switchToPantallaPrincipal(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/PantallaDeInicio.fxml"));
+            Parent root = loader.load();
+            Scene newScene = new Scene(root);
+            Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            currentStage.setScene(newScene);
+            currentStage.show();
+            PantallaDeInicioController controller = loader.getController();
+            controller.setStage(currentStage);
+            controller.setStageLogin(loginStage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setCategory(Category category) throws AcountDAOException, IOException {
+        this.category = category;
+        nombre_categoria_letra.setText(category.getName());
+        descripcion_categoria_letra.setText(category.getDescription());
+        chargesList = FXCollections.observableArrayList(getChargesByCategory(category.getName()));
         tableview_gastos_cat.setItems(chargesList);
     }
-    
+
     private List<Charge> getChargesByCategory(String categoryName) throws AcountDAOException, IOException {
-        // Obtener el usuario logueado
-        Acount acount = Acount.getInstance();
-        // Obtener la lista de gastos del usuario logueado
-        List<Charge> allCharges = acount.getUserCharges();
-        // Filtrar por categoría
-        return allCharges.stream()
+        return Acount.getInstance().getUserCharges().stream()
                 .filter(charge -> charge.getCategory().getName().equals(categoryName))
                 .collect(Collectors.toList());
     }
-    
-    
-    
-    private void añadirGasto(){/*
-         try {
-            // Cargar el archivo FXML para la nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CrearGasto.fxml"));
-            Parent root = loader.load();
 
-            // Crear un nuevo Stage
-            Stage stage = new Stage();
-            stage.setTitle("Añadir gasto");
-            stage.setScene(new Scene(root));
-            //Configurar para que cree gastos
-            CrearCategoriaController controlador = loader.getController();
-            controlador.setAdd();
-            // Mostrar la nueva ventana
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+    private void añadirGasto() {
+        // Implement the logic to add a new charge
     }
-    private void modificarGasto(Charge gastoSelect){/*
-         try {
-            // Cargar el archivo FXML para la nueva ventana
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CrearGasto.fxml"));
-            Parent root = loader.load();
 
-            // Crear un nuevo Stage
-            Stage stage = new Stage();
-            stage.setTitle("Modificar gasto");
-            stage.setScene(new Scene(root));
-            //Configurar para que modifique un gasto
-            CrearCategoriaController controlador = loader.getController();
-            controlador.setStage(stage);
-            controlador.setModify(selectedCharge);
-            // Mostrar la nueva ventana
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+    private void modificarGasto(Charge charge) {
+        // Implement the logic to modify an existing charge
     }
-    private void eliminarGasto(Charge gastoSelect) throws AcountDAOException, IOException{
-        Acount acount = Acount.getInstance();
-        acount.removeCharge(gastoSelect);
+
+    private void eliminarGasto(Charge charge) throws AcountDAOException, IOException {
+        if (charge != null) {
+            boolean success = Acount.getInstance().removeCharge(charge);
+            if (success) {
+                chargesList.remove(charge);
+            } else {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Error");
+                errorAlert.setHeaderText("Error al eliminar el gasto");
+                errorAlert.setContentText("No se pudo eliminar el gasto. Inténtalo de nuevo.");
+                errorAlert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Eliminar Gasto");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona un gasto para eliminar.");
+            alert.showAndWait();
+        }
     }
-        
 }
