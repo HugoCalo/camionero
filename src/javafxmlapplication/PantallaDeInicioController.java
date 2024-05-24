@@ -2,7 +2,6 @@ package javafxmlapplication;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafxmlapplication.CompararMeses.CompararMesesController;
 import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;
+import javafxmlapplication.CrearGasto.CrearGastoController;
 import javafxmlapplication.creacionCategoria.CreacionCategoriaController;
 import model.Acount;
 import model.Category;
@@ -151,6 +151,7 @@ public class PantallaDeInicioController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CompararMeses/CompararMeses.fxml"));
             Parent newSceneParent = loader.load();
+
             
             // Obtener el controlador de la nueva escena
             CompararMesesController controller = loader.getController();
@@ -159,6 +160,7 @@ public class PantallaDeInicioController implements Initializable {
             Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             controller.setStage(currentStage);
             controller.setLoginStage(loginStage); // Asegurarse de pasar loginStage al nuevo controlador
+
 
             // Cambiar a la nueva escena
             Scene newScene = new Scene(newSceneParent);
@@ -189,11 +191,30 @@ public class PantallaDeInicioController implements Initializable {
     }
 
     private void handleAddCost(ActionEvent event) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Add Cost");
-        alert.setHeaderText(null);
-        alert.setContentText("Adding a new cost!");
-        alert.showAndWait();
+        Category selectedCategory = tableview_category.getSelectionModel().getSelectedItem();
+        if (selectedCategory != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CrearGasto/CrearGasto.fxml"));
+                Parent root = loader.load();
+
+                CrearGastoController controller = loader.getController();
+                Stage newStage = new Stage();
+                newStage.setTitle("Añadir Gasto");
+                newStage.setScene(new Scene(root));
+                controller.setStage(newStage);
+                controller.setCategory(selectedCategory);
+                controller.setChargeList(FXCollections.observableArrayList(Acount.getInstance().getUserCharges()));
+                newStage.show();
+            } catch (IOException | AcountDAOException ex) {
+                Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Añadir Gasto");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona una categoría para añadir el gasto.");
+            alert.showAndWait();
+        }
     }
 
     private void handleShowGastosDeCategoria(ActionEvent event) {
