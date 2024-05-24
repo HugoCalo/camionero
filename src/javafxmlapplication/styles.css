@@ -1,0 +1,72 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 23 may 2024, 18:54:15
+    Author     : hugoc
+*/
+
+/* styles.css */
+
+/* Fondo de la raíz */
+.root {
+    -fx-background-color: #0C0C0C;
+    -fx-text-fill: #ffffff;
+}
+
+/* Estilo para botones */
+.button {
+    -fx-background-color: #FF6600;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-background-radius: 20px; /* Bordes redondeados */
+    -fx-border-radius: 20px; /* Bordes redondeados */
+}
+
+/* Estilo para campos de texto */
+.text-field {
+    -fx-background-color: #322E2C;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: transparent;
+    -fx-background-radius: 20px; /* Bordes redondeados */
+    -fx-border-radius: 20px; /* Bordes redondeados */
+}
+
+.text-field:focused {
+    -fx-border-color: #FF6600; /* Borde naranja cuando está en foco */
+}
+
+/* Estilo para etiquetas */
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Serif'; /* Fuente formal */
+    -fx-font-size: 14px;
+}
+
+/* Estilo para ToolBars */
+.tool-bar {
+    -fx-background-color: #322E2C;
+    -fx-background-radius: 20px; /* Bordes redondeados */
+    -fx-border-radius: 20px; /* Bordes redondeados */
+}
+
+/* Estilo para TableViews */
+.table-view {
+    -fx-background-color: #322E2C;
+    -fx-background-radius: 20px; /* Bordes redondeados */
+    -fx-border-radius: 20px; /* Bordes redondeados */
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #322E2C;
+    -fx-background-radius: 20px; /* Bordes redondeados */
+}
+
+.table-view .table-cell {
+    -fx-background-color: #322E2C;
+    -fx-background-radius: 20px; /* Bordes redondeados */
+    -fx-text-fill: #ffffff;
+}

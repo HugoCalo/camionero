@@ -52,7 +52,7 @@
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="459.0" prefWidth="288.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="nombre_categoria_letra" prefHeight="144.0" prefWidth="270.0" text="Nombre de la categoría" wrapText="true">
+            <Label fx:id="nombre_categoria_letra" prefHeight="144.0" prefWidth="270.0" wrapText="true">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
@@ -60,7 +60,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="descripcion_categoria_letra" alignment="TOP_LEFT" prefHeight="193.0" prefWidth="288.0" text="Mucho texto descripción categoría blablbalblb" textAlignment="JUSTIFY" wrapText="true">
+            <Label fx:id="descripcion_categoria_letra" alignment="TOP_LEFT" prefHeight="193.0" prefWidth="288.0" textAlignment="JUSTIFY" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
