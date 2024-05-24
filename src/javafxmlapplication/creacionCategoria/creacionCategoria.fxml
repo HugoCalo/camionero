@@ -39,7 +39,7 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="384.0" text="Creación de categoría">
+            <Label fx:id="titulo" alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="384.0" text="Creación de categoría">
                <font>
                   <Font size="37.0" />
                </font>

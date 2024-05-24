@@ -152,15 +152,13 @@ public class PantallaDeInicioController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CompararMeses/CompararMeses.fxml"));
             Parent newSceneParent = loader.load();
 
-            
             // Obtener el controlador de la nueva escena
             CompararMesesController controller = loader.getController();
-            
+
             // Configurar las propiedades necesarias en el controlador
             Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             controller.setStage(currentStage);
             controller.setLoginStage(loginStage); // Asegurarse de pasar loginStage al nuevo controlador
-
 
             // Cambiar a la nueva escena
             Scene newScene = new Scene(newSceneParent);
@@ -264,11 +262,31 @@ public class PantallaDeInicioController implements Initializable {
     }
 
     private void handleModifyCategory(ActionEvent event) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Modify Category");
-        alert.setHeaderText(null);
-        alert.setContentText("Modifying category!");
-        alert.showAndWait();
+        Category selectedCategory = tableview_category.getSelectionModel().getSelectedItem();
+        if (selectedCategory != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/creacionCategoria/CreacionCategoria.fxml"));
+                Parent root = loader.load();
+
+                CreacionCategoriaController controller = loader.getController();
+                Stage newStage = new Stage();
+                newStage.setTitle("Modificar Categoría");
+                newStage.setScene(new Scene(root));
+                controller.setStage(newStage);
+                controller.setCategoryList(categoryList);
+                controller.loadCategoryData(selectedCategory);
+
+                newStage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Modificar Categoría");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona una categoría para modificar.");
+            alert.showAndWait();
+        }
     }
 
     private void handleDeleteCategory(ActionEvent event) {
