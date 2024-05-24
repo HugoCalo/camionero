@@ -92,18 +92,7 @@ public class DesgloseDeGastosController implements Initializable {
             Logger.getLogger(DesgloseDeGastosController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        tableview_gastos_cat.setItems(chargesList);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        unitsColumn.setCellValueFactory(new PropertyValueFactory<>("units"));
-        reciboColumn.setCellValueFactory(cellData -> {
-            ImageView imageView = new ImageView(cellData.getValue().getImageScan());
-            imageView.setFitHeight(50);
-            imageView.setPreserveRatio(true);
-            return new ReadOnlyObjectWrapper<>(imageView);
-        });
+        setupTableView();
 
         volverainicio_boton.setDisable(false);
         volverainicio_boton.setVisible(true);
@@ -143,8 +132,22 @@ public class DesgloseDeGastosController implements Initializable {
         anadir_gasto_boton.setOnAction(event -> anadirGasto());
         modificar_gasto_boton.setOnAction(event -> modificarGasto(selectedCharge));
 
-        // Disable the modify and delete buttons initially
         updateButtonsState(false);
+    }
+
+    private void setupTableView() {
+        tableview_gastos_cat.setItems(chargesList);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        unitsColumn.setCellValueFactory(new PropertyValueFactory<>("units"));
+        reciboColumn.setCellValueFactory(cellData -> {
+            ImageView imageView = new ImageView(cellData.getValue().getImageScan());
+            imageView.setFitHeight(50);
+            imageView.setPreserveRatio(true);
+            return new ReadOnlyObjectWrapper<>(imageView);
+        });
     }
 
     private void switchToPantallaPrincipal(ActionEvent event) {
@@ -167,8 +170,11 @@ public class DesgloseDeGastosController implements Initializable {
         this.category = category;
         nombre_categoria_letra.setText(category.getName());
         descripcion_categoria_letra.setText(category.getDescription());
-        chargesList = FXCollections.observableArrayList(getChargesByCategory(category.getName()));
-        tableview_gastos_cat.setItems(chargesList);
+        updateChargesList();
+    }
+
+    private void updateChargesList() throws AcountDAOException, IOException {
+        chargesList.setAll(getChargesByCategory(category.getName()));
     }
 
     private List<Charge> getChargesByCategory(String categoryName) throws AcountDAOException, IOException {

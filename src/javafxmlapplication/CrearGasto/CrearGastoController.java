@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,7 +71,6 @@ public class CrearGastoController implements Initializable {
         Unidades_campo.setOnAction(event -> descripcionGasto_campo.requestFocus());
         descripcionGasto_campo.setOnAction(event -> add_date.requestFocus());
 
-        // Ensure only numbers can be entered
         setNumericInput(costeGasto_campo, true);
         setNumericInput(Unidades_campo, false);
 
@@ -126,10 +126,9 @@ public class CrearGastoController implements Initializable {
         }
         LocalDate date = add_date.getValue();
 
-        // If receiptImage is still null, set a default image
         if (receiptImage == null) {
-            receiptImage = new Image("file:imagenes/loguito guapo.png"); // Ruta a la imagen predefinida
-            anadirRecibo_imagen.setImage(receiptImage); // Comentar esta línea si no se puede cargar la imagen en este entorno
+            receiptImage = new Image("file:imagenes/loguito guapo.png");
+            anadirRecibo_imagen.setImage(receiptImage);
         }
 
         if (chargeToModify != null) {
@@ -146,7 +145,9 @@ public class CrearGastoController implements Initializable {
 
         boolean success = Acount.getInstance().registerCharge(name, description, cost, units, receiptImage, date, category);
         if (success) {
-            chargeList.setAll(Acount.getInstance().getUserCharges());
+            chargeList.setAll(Acount.getInstance().getUserCharges().stream()
+                .filter(charge -> charge.getCategory().getName().equals(category.getName()))
+                .collect(Collectors.toList()));
             stage.close(); // Cerrar ventana
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -178,12 +179,10 @@ public class CrearGastoController implements Initializable {
         TextFormatter<String> textFormatter = new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
             if (isDouble) {
-                // Allow empty text or valid double number
                 if (newText.isEmpty() || newText.matches("\\d*\\.?\\d*")) {
                     return change;
                 }
             } else {
-                // Allow empty text or valid integer number
                 if (newText.isEmpty() || newText.matches("\\d*")) {
                     return change;
                 }
@@ -204,9 +203,8 @@ public class CrearGastoController implements Initializable {
         if (receiptImage != null) {
             anadirRecibo_imagen.setImage(receiptImage);
         } else {
-            // Set default image if no image is available
-            receiptImage = new Image("file:imagenes/loguito guapo.png"); // Ruta a la imagen predefinida
-            anadirRecibo_imagen.setImage(receiptImage); // Comentar esta línea si no se puede cargar la imagen en este entorno
+            receiptImage = new Image("file:imagenes/loguito guapo.png");
+            anadirRecibo_imagen.setImage(receiptImage);
         }
         titulo_crear_gasto.setText("Modificar Gasto");
         validateFields();
