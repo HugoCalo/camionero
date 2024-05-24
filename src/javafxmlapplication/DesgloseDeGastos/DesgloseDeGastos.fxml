@@ -36,7 +36,7 @@
             </HBox>
             <HBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" prefHeight="108.0" prefWidth="1035.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label prefHeight="70.0" prefWidth="456.0" text="Desglose de gastos">
+                  <Label fx:id="titulo_desglose" prefHeight="70.0" prefWidth="456.0" text="Desglose de gastos">
                      <font>
                         <Font size="48.0" />
                      </font>
@@ -50,7 +50,7 @@
       </HBox>
    </top>
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="459.0" prefWidth="288.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="459.0" prefWidth="206.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="nombre_categoria_letra" prefHeight="144.0" prefWidth="270.0" wrapText="true">
                <VBox.margin>
@@ -94,7 +94,7 @@
                   </ToolBar>
                </children>
             </HBox>
-            <ScrollPane fx:id="pantalla_gastos" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="pantalla_gastos" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="30.0" right="40.0" top="30.0" />
                </VBox.margin>
@@ -116,7 +116,7 @@
             </ScrollPane>
          </children>
          <BorderPane.margin>
-            <Insets bottom="20.0" left="60.0" right="10.0" />
+            <Insets bottom="20.0" left="30.0" right="10.0" />
          </BorderPane.margin>
       </VBox>
    </center>

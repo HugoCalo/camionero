@@ -115,22 +115,20 @@ public class DesgloseDeGastosController implements Initializable {
             TableRow<Charge> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty()) {
-                    selectedCharge = row.isSelected() ? null : row.getItem();
-                    tableview_gastos_cat.getSelectionModel().clearSelection(row.getIndex());
+                    selectedCharge = row.getItem();
+                    tableview_gastos_cat.getSelectionModel().select(row.getIndex());
+                    updateButtonsState(true);
                 }
             });
             return row;
         });
 
         tableview_gastos_cat.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                modificar_gasto_boton.setDisable(false);
-                eliminar_gasto_boton.setDisable(false);
-                selectedCharge = newSelection;
+            if (newSelection == null) {
+                updateButtonsState(false);
             } else {
-                modificar_gasto_boton.setDisable(true);
-                eliminar_gasto_boton.setDisable(true);
-                selectedCharge = null;
+                selectedCharge = newSelection;
+                updateButtonsState(true);
             }
         });
 
@@ -144,6 +142,9 @@ public class DesgloseDeGastosController implements Initializable {
 
         anadir_gasto_boton.setOnAction(event -> anadirGasto());
         modificar_gasto_boton.setOnAction(event -> modificarGasto(selectedCharge));
+
+        // Disable the modify and delete buttons initially
+        updateButtonsState(false);
     }
 
     private void switchToPantallaPrincipal(ActionEvent event) {
@@ -194,7 +195,21 @@ public class DesgloseDeGastosController implements Initializable {
     }
 
     private void modificarGasto(Charge charge) {
-        // Implement the logic to modify an existing charge
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CrearGasto/CrearGasto.fxml"));
+            Parent root = loader.load();
+            CrearGastoController controller = loader.getController();
+            Stage newStage = new Stage();
+            newStage.setTitle("Modificar Gasto");
+            newStage.setScene(new Scene(root));
+            controller.setStage(newStage);
+            controller.setCategory(category);
+            controller.setChargeList(chargesList);
+            controller.loadChargeData(charge); // Pass the charge data to the controller
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void eliminarGasto(Charge charge) throws AcountDAOException, IOException {
@@ -202,6 +217,7 @@ public class DesgloseDeGastosController implements Initializable {
             boolean success = Acount.getInstance().removeCharge(charge);
             if (success) {
                 chargesList.remove(charge);
+                tableview_gastos_cat.refresh();
             } else {
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setTitle("Error");
@@ -216,5 +232,10 @@ public class DesgloseDeGastosController implements Initializable {
             alert.setContentText("Por favor, selecciona un gasto para eliminar.");
             alert.showAndWait();
         }
+    }
+
+    private void updateButtonsState(boolean enable) {
+        modificar_gasto_boton.setDisable(!enable);
+        eliminar_gasto_boton.setDisable(!enable);
     }
 }
