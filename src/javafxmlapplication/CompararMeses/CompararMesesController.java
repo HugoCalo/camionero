@@ -60,10 +60,15 @@ public class CompararMesesController implements Initializable {
     private BarChart<String, Number> barChart;
 
     private Stage stage;
+    private Stage loginStage;
     private Map<String, String> colorMap;
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void setLoginStage(Stage loginStage) {
+        this.loginStage = loginStage;
     }
 
     @Override
@@ -125,7 +130,6 @@ public class CompararMesesController implements Initializable {
     }
 
     private void configureComboBoxes() {
-        // Configure month ComboBox
         ObservableList<String> months = FXCollections.observableArrayList(
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
@@ -133,19 +137,15 @@ public class CompararMesesController implements Initializable {
         monthComboBox1.setItems(months);
         monthComboBox2.setItems(months);
 
-        // Configure year ComboBox
         ObservableList<Integer> years = FXCollections.observableArrayList();
-        for (int year = 2000; year <= 2030; year++) {
-            years.add(year);
-        }
+        for (int year = 2000; year <= 2030; years.add(year++));
+
         yearComboBox1.setItems(years);
         yearComboBox2.setItems(years);
 
-        // Set default year to 2024
         yearComboBox1.setValue(2024);
         yearComboBox2.setValue(2024);
 
-        // Enable compare button when both month and year are selected
         ChangeListener<Object> changeListener = (obs, oldValue, newValue) -> {
             compare_button.setDisable(
                 monthComboBox1.getValue() == null || yearComboBox1.getValue() == null ||
@@ -166,6 +166,7 @@ public class CompararMesesController implements Initializable {
 
             PantallaDeInicioController controller = loader.getController();
             controller.setStage(stage);
+            controller.setStageLogin(loginStage); // Asegurarse de pasar loginStage al nuevo controlador
 
             Scene newScene = new Scene(newSceneParent);
             stage.setScene(newScene);
@@ -197,7 +198,6 @@ public class CompararMesesController implements Initializable {
 
         table_view_resumen.setItems(tableData);
 
-        // Update Bar Chart
         updateBarChart(charges1, charges2);
 
         double total1 = charges1.stream().mapToDouble(Charge::getCost).sum();
@@ -242,7 +242,6 @@ public class CompararMesesController implements Initializable {
 
         barChart.getData().addAll(series1, series2);
 
-        // Set different colors for the bars
         for (XYChart.Data<String, Number> data : series1.getData()) {
             data.getNode().setStyle("-fx-bar-fill: #FF6E0D;");
         }

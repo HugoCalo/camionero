@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit este template
- */
 package javafxmlapplication;
 
 import java.io.IOException;
@@ -34,10 +30,6 @@ import model.Acount;
 import model.Category;
 import model.AcountDAOException;
 
-/**
- * FXML Controller class
- *
- */
 public class PantallaDeInicioController implements Initializable {
 
     @FXML
@@ -83,9 +75,6 @@ public class PantallaDeInicioController implements Initializable {
         this.loginStage = loginStage;
     }
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -158,27 +147,27 @@ public class PantallaDeInicioController implements Initializable {
         alert.showAndWait();
     }
 
-private void handleCompareMonth(ActionEvent event) {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CompararMeses/CompararMeses.fxml"));
-        Parent newSceneParent = loader.load();
-        
-        // Obtener el controlador de la nueva escena
-        CompararMesesController controller = loader.getController();
-        
-        // Configurar las propiedades necesarias en el controlador
-        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        controller.setStage(currentStage);
+    private void handleCompareMonth(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/CompararMeses/CompararMeses.fxml"));
+            Parent newSceneParent = loader.load();
+            
+            // Obtener el controlador de la nueva escena
+            CompararMesesController controller = loader.getController();
+            
+            // Configurar las propiedades necesarias en el controlador
+            Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            controller.setStage(currentStage);
+            controller.setLoginStage(loginStage); // Asegurarse de pasar loginStage al nuevo controlador
 
-        // Cambiar a la nueva escena
-        Scene newScene = new Scene(newSceneParent);
-        currentStage.setScene(newScene);
-        currentStage.show();
-    } catch (IOException e) {
-        Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, e);
+            // Cambiar a la nueva escena
+            Scene newScene = new Scene(newSceneParent);
+            currentStage.setScene(newScene);
+            currentStage.show();
+        } catch (IOException e) {
+            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
-}
-
 
     private void handleShowProfile(ActionEvent event) throws AcountDAOException {
         try {
