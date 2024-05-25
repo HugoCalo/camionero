@@ -64,14 +64,14 @@ public class InicioDeSesionController implements Initializable {
             try {
                 switchToRegisterScene();
             } catch (IOException e) {
-                e.printStackTrace();
+               
             }
         });
          button_init_sesion.setOnAction(event -> {
              try{
              handleLogin(event);
              }catch (IOException e) {     
-                 e.printStackTrace();
+                
              }
          });
     }

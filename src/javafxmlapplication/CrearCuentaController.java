@@ -81,7 +81,7 @@ public class CrearCuentaController implements Initializable {
                     ponerEnBlanco();
                     switchToLoginScene();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    
                 }
             }
         });
@@ -101,7 +101,7 @@ public class CrearCuentaController implements Initializable {
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                
             }
         });
 

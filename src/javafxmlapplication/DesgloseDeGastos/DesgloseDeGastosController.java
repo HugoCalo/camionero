@@ -127,7 +127,7 @@ public class DesgloseDeGastosController implements Initializable {
             try {
                 eliminarGasto(selectedCharge);
             } catch (IOException | AcountDAOException e) {
-                e.printStackTrace();
+                
             }
         });
 
@@ -164,7 +164,7 @@ public class DesgloseDeGastosController implements Initializable {
             controller.setStage(currentStage);
             controller.setStageLogin(loginStage);
         } catch (IOException e) {
-            e.printStackTrace();
+            
         }
     }
 
@@ -198,7 +198,7 @@ public class DesgloseDeGastosController implements Initializable {
             controller.setChargeList(chargesList);
             newStage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+           
         }
     }
 
@@ -216,7 +216,7 @@ public class DesgloseDeGastosController implements Initializable {
             controller.loadChargeData(charge); // Pass the charge data to the controller
             newStage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            
         }
     }
 

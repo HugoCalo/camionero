@@ -53,9 +53,7 @@ public class CreacionCategoriaController implements Initializable {
         botonAceptar.setOnAction(event -> {
             try {
                 handleAceptar();
-            } catch (AcountDAOException ex) {
-                Logger.getLogger(CreacionCategoriaController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
+            } catch (AcountDAOException | IOException ex) {
                 Logger.getLogger(CreacionCategoriaController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });

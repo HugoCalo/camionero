@@ -83,9 +83,7 @@ public class PantallaDeInicioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             categoryList = FXCollections.observableArrayList(Acount.getInstance().getUserCategories());
-        } catch (AcountDAOException ex) {
-            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (AcountDAOException | IOException ex) {
             Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
         tableview_category.setItems(categoryList);
@@ -94,21 +92,16 @@ public class PantallaDeInicioController implements Initializable {
         column_description.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         // Configurar la columna de precio
-        column_price.setCellFactory(new Callback<TableColumn<Category, Double>, TableCell<Category, Double>>() {
+        column_price.setCellFactory((TableColumn<Category, Double> param) -> new TableCell<Category, Double>() {
             @Override
-            public TableCell<Category, Double> call(TableColumn<Category, Double> param) {
-                return new TableCell<Category, Double>() {
-                    @Override
-                    protected void updateItem(Double item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setText(null);
-                        } else {
-                            Category category = getTableView().getItems().get(getIndex());
-                            setText(String.format("%.2f", calculateTotalPrice(category)));
-                        }
-                    }
-                };
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    Category category = getTableView().getItems().get(getIndex());
+                    setText(String.format("%.2f", calculateTotalPrice(category)));
+                }
             }
         });
 
@@ -175,7 +168,7 @@ public class PantallaDeInicioController implements Initializable {
                         loginStage.show();
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    
                 } catch (AcountDAOException ex) {
                     Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -287,7 +280,7 @@ public class PantallaDeInicioController implements Initializable {
                 currentStage.show();
           
             } catch (IOException | AcountDAOException e) {
-                e.printStackTrace();
+                
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
