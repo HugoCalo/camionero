@@ -5,15 +5,14 @@
         <group>
             <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/styles.css</file>
             <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/creacionCategoria/CreacionCategoriaController.java</file>
+            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/CompararMeses/compararmeses.css</file>
             <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/DesgloseDeGastos/DesgloseDeGastosController.java</file>
-            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/mostrarGastos/mostrarGastos.css</file>
-            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/mostrarGastos/mostrarGastosController.java</file>
             <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/JavaFXMLApplication.java</file>
             <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/CrearGasto/creargasto.css</file>
-            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/mostrarGastos/mostrarGastos.fxml</file>
             <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/creacionCategoria/creacioncategoria.css</file>
             <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/DesgloseDeGastos/desglosedegastos.css</file>
             <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/pantalladeinicio.css</file>
+            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/CompararMeses/CompararMesesController.java</file>
         </group>
     </open-files>
 </project-private>
