@@ -2,6 +2,210 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
+/* Estilos para el BorderPane (color #272727) */
+.border-pane {
+    -fx-background-color: #272727;
+}
+
+/* Estilo para el Label del título */
+.label-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 36px !important;
+    -fx-font-weight: bold;
+}
+
+/* Estilo para los Labels */
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+}
+
+/* Estilo para los TextFields */
+.text-field {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
+}
+
+.text-field:focused {
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
+}
+
+
+/* Estilo para los TextAreas */
+.text-area {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
+}
+
+.text-area:focused {
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
+}
+
+/* Estilo para los botones */
+.button {
+    -fx-background-color: #F57D0D;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+/* Estilo para los DatePicker */
+
+/*.date-picker {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+ Quitar borde naranja al estar en focus 
+.date-picker:focused .date-picker-popup {
+    -fx-border-color: transparent;
+}
+
+.date-picker:focused {
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
+}
+
+ Estilo para el menú emergente del DatePicker 
+.date-picker-popup {
+    -fx-background-color: #383838;
+    -fx-control-inner-background: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.date-picker-popup .month-year-pane,
+.date-picker-popup .day-cell {
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffffff;
+}
+
+ Estilo para los botones de cambio de mes y año 
+.date-picker-popup .spinner > .left-arrow,
+.date-picker-popup .spinner > .right-arrow {
+    -fx-background-color: #ffffff;  Fondo blanco para el botón 
+    -fx-shape: "M2,2 L2,10 L10,6 Z";  Forma de la flecha 
+}
+
+.date-picker-popup .spinner > .left-arrow .arrow,
+.date-picker-popup .spinner > .right-arrow .arrow {
+    -fx-background-color: #F57D0D;  Color naranja para la flecha 
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #555555;
+}
+
+.date-picker-popup .day-cell:selected,
+.date-picker-popup .day-cell:selected:hover {
+    -fx-background-color: #F57D0D;
+    -fx-text-fill: #ffffff;
+}
+
+.date-picker-popup .month-label,
+.date-picker-popup .year-label {
+    -fx-text-fill: #ffffff;
+}
+
+ Estilo para la cuadrícula de los días del mes 
+.date-picker-popup .day-cell {
+    -fx-background-color: #000000;
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 0.5px;
+}
+ */
+ 
+ 
+ .date-picker {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.date-picker:focused .date-picker-popup {
+    -fx-border-color: transparent; /* Quitar el borde naranja alrededor del calendario */
+}
+
+.date-picker:focused {
+    -fx-border-color: transparent; /* Quitar el borde naranja alrededor del DatePicker sin desplegar */
+}
+
+/* Estilo para el menú emergente del DatePicker */
+.date-picker-popup {
+    -fx-background-color: #383838;
+    -fx-control-inner-background: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+}
+
+.date-picker-popup .month-year-pane,
+.date-picker-popup .day-cell {
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffffff;
+}
+
+/* Estilo para los botones de cambio de mes y año */
+.date-picker-popup .spinner > .left-arrow,
+.date-picker-popup .spinner > .right-arrow {
+    -fx-background-color: #ffffff; /* Fondo blanco para el botón */
+    -fx-shape: "M2,2 L2,10 L10,6 Z"; /* Forma de la flecha */
+}
+
+.date-picker-popup .spinner > .left-arrow .arrow,
+.date-picker-popup .spinner > .right-arrow .arrow {
+    -fx-background-color: #F57D0D; /* Color naranja para la flecha */
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #555555;
+}
+
+.date-picker-popup .day-cell:selected,
+.date-picker-popup .day-cell:selected:hover {
+    -fx-background-color: #F57D0D;
+    -fx-text-fill: #ffffff;
+}
+
+.date-picker-popup .month-label,
+.date-picker-popup .year-label {
+    -fx-text-fill: #ffffff;
+}
+
+/* Estilo para la cuadrícula de los días del mes */
+.date-picker-popup .day-cell {
+    -fx-background-color: #000000;
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 0.5px;
+}
+
+/* Estilo para los títulos de los días de la semana */
+.date-picker-popup .day-of-week-label {
+    -fx-background-color: #000000; /* Fondo negro para los días de la semana */
+    -fx-text-fill: #ffffff;
 
 }
+
+.date-picker-popup .calendar .days-of-week {
+    -fx-background-color: #000000; /* Fondo negro para la fila de los días de la semana */
+    -fx-text-fill: #ffffff;
+}
+

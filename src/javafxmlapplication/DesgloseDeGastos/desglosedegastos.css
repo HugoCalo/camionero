@@ -1,7 +1,121 @@
-/*
- * Empty Stylesheet file.
- */
+/* Estilos para el BorderPane */
+.border-pane {
+    -fx-background-color: #272727;
+}
 
-.mainFxmlClass {
+/* Estilo para el Label del título */
+.label-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 36px !important;
+    -fx-font-weight: bold;
+}
 
+.label-title-nombre {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 30px !important;
+    -fx-font-weight: bold;
+}
+
+.label-title-description {
+    -fx-text-fill: #ffffff;
+/*    -fx-font-family: 'Times New Roman';*/
+    -fx-font-size: 14px !important;
+    -fx-font-weight: bold;
+}
+
+/* Estilo para los Labels */
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+}
+
+/* Estilo para los TextFields */
+.text-field {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
+}
+
+.text-field:focused {
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
+}
+
+/* Estilo para los TextAreas */
+.text-area {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
+}
+
+.text-area:focused {
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
+}
+
+/* Estilo para los botones */
+.button {
+    -fx-background-color: #F57D0D;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+/* Estilo para la TableView */
+.table-view {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #272727;
+}
+
+.table-view .filler {
+    -fx-background-color: #383838;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #383838;
+    -fx-border-color: #272727;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .table-row-cell:focused, .table-view .table-row-cell:selected {
+    -fx-background-color: #555555;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .table-row-cell:focused .table-cell, .table-view .table-row-cell:selected .table-cell {
+    -fx-background-color: #555555;
+}
+
+.table-view .table-cell {
+    -fx-border-color: #272727;
+    -fx-text-fill: #ffffff;
+}
+
+/* Estilo para el ScrollPane */
+.scroll-pane {
+    -fx-background: #383838;
+    -fx-background-color: #383838;
+    -fx-border-color: #272727;
+    -fx-border-radius: 20px;
+}
+
+.tool-bar {
+    -fx-background-color: #383838;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-padding: 10px; /* Añadir un poco de padding para que se vea mejor */
 }

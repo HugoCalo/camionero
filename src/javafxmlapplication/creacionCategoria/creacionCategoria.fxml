@@ -6,40 +6,76 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.creacionCategoria.CreacionCategoriaController">
+<BorderPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" styleClass="border-pane" stylesheets="@creacioncategoria.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.creacionCategoria.CreacionCategoriaController">
    <center>
       <VBox prefHeight="250.0" prefWidth="600.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="180.0" prefWidth="600.0">
+            <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="180.0">
+                  <VBox prefHeight="120.0">
                      <children>
-                        <Label text="Nombre de la categoría">
+                        <VBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="358.0">
+                           <children>
+                              <Label text="Nombre de la categoría:">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="6.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="nombreCategoria" prefHeight="25.0" prefWidth="167.0" />
+                           </children>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets left="50.0" right="250.0" />
                            </VBox.margin>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox minHeight="130.0" prefHeight="130.0" prefWidth="479.0">
+                     <children>
+                        <Label text="Descripción:">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="6.0" />
+                           </padding>
                         </Label>
-                        <TextField fx:id="nombreCategoria" prefHeight="25.0" prefWidth="167.0" promptText="nombreCategoria" />
+                        <TextField fx:id="descripcionCategoria" alignment="TOP_LEFT" prefHeight="135.0" prefWidth="183.0" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
                      </children>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="50.0" right="70.0" />
+                     </VBox.margin>
                   </VBox>
-                  <Region prefHeight="180.0" prefWidth="132.0" />
-                  <TextField fx:id="descripcionCategoria" alignment="TOP_LEFT" prefHeight="139.0" prefWidth="183.0" promptText="DescripcionCategoria" />
                </children>
-            </HBox>
+            </VBox>
          </children>
       </VBox>
    </center>
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="titulo" alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="384.0" text="Creación de categoría">
+            <Label fx:id="titulo" alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="384.0" styleClass="label-title" text="Creación de categoría">
                <font>
                   <Font size="37.0" />
                </font>
@@ -53,8 +89,8 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="botonAceptar" mnemonicParsing="false" prefHeight="32.0" prefWidth="72.0" text="aceptar" />
-            <Button fx:id="botonCancelar" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" text="cancelar">
+            <Button fx:id="botonAceptar" mnemonicParsing="false" prefHeight="32.0" prefWidth="72.0" text="Aceptar" />
+            <Button fx:id="botonCancelar" mnemonicParsing="false" prefHeight="32.0" prefWidth="75.0" text="Cancelar">
                <HBox.margin>
                   <Insets left="30.0" right="40.0" />
                </HBox.margin>
@@ -66,6 +102,9 @@
          <BorderPane.margin>
             <Insets bottom="10.0" />
          </BorderPane.margin>
+         <padding>
+            <Insets right="15.0" />
+         </padding>
       </HBox>
    </bottom>
 </BorderPane>

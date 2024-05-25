@@ -1,0 +1,140 @@
+
+
+/* Estilos para el BorderPane (color #272727) */
+.border-pane {
+    -fx-background-color: #272727;
+}
+
+/* Estilo para el Label del título */
+.label-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 36px !important;
+    -fx-font-weight: bold;
+}
+
+/* Estilo para los Labels */
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+}
+
+/* Estilo para los TextFields y ComboBoxes */
+.text-field, .combo-box {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
+}
+
+/* Estilo para los botones */
+.button {
+    -fx-background-color: #F57D0D;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+/* Estilo para la TableView */
+.table-view {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #272727;
+}
+
+.table-view .filler {
+    -fx-background-color: #383838;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #383838;
+    -fx-border-color: #272727;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .table-row-cell:focused, .table-view .table-row-cell:selected {
+    -fx-background-color: #555555;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .table-row-cell:focused .table-cell, .table-view .table-row-cell:selected .table-cell {
+    -fx-background-color: #555555;
+}
+
+.table-view .table-cell {
+    -fx-border-color: #272727;
+    -fx-text-fill: #ffffff;
+}
+
+/* Estilo para el ScrollPane */
+.scroll-pane {
+    -fx-background: #383838;
+    -fx-background-color: #383838;
+    -fx-border-color: #272727;
+    -fx-border-radius: 20px;
+}
+
+/* Estilo para la BarChart */
+.bar-chart {
+/*    -fx-background-color: #383838;*/
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.axis {
+    -fx-tick-label-fill: #ffffff;
+    -fx-font-size: 12px;
+}
+
+.axis .axis-label {
+    -fx-text-fill: #ffffff;
+}
+
+.chart-legend {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.chart-plot-background {
+    -fx-background-color: #383838;
+    -fx-border-color: #272727;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #F57D0D;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #383838;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #ffffff;
+}
+
+.combo-box .list-view {
+    -fx-background-color: #383838;
+    -fx-control-inner-background: #383838;
+    -fx-text-fill: #ffffff;
+}

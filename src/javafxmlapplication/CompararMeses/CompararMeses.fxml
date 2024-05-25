@@ -16,12 +16,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.CompararMeses.CompararMesesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="border-pane" stylesheets="@compararmeses.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.CompararMeses.CompararMesesController">
    <top>
       <HBox prefHeight="83.0" prefWidth="780.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="return_pantalla_principal" mnemonicParsing="false" prefHeight="101.0" prefWidth="140.0" text="Volver" />
-            <Label prefHeight="102.0" prefWidth="471.0" text="Comparacion de meses ">
+            <Label prefHeight="102.0" prefWidth="471.0" styleClass="label-title" text="Comparacion de meses ">
                <font>
                   <Font size="41.0" />
                </font>
@@ -37,16 +37,16 @@
          <children>
             <HBox alignment="CENTER" prefHeight="79.0" prefWidth="800.0">
                <children>
-                  <ComboBox fx:id="monthComboBox1" prefHeight="26.0" prefWidth="141.0" promptText="Mes 1">
+                  <ComboBox fx:id="monthComboBox1" prefHeight="26.0" prefWidth="141.0" promptText="Mes 1" styleClass="combo-box">
                      <HBox.margin>
                         <Insets left="40.0" />
                      </HBox.margin></ComboBox>
                   <Region prefHeight="99.0" prefWidth="51.0" />
-                  <ComboBox fx:id="yearComboBox1" prefHeight="26.0" prefWidth="70.0" promptText="2024" />
+                  <ComboBox fx:id="yearComboBox1" prefHeight="26.0" prefWidth="70.0" promptText="2024" styleClass="combo-box" />
                   <Region prefHeight="79.0" prefWidth="183.0" />
-                  <ComboBox fx:id="monthComboBox2" prefWidth="150.0" promptText="Mes 2" />
+                  <ComboBox fx:id="monthComboBox2" prefWidth="150.0" promptText="Mes 2" styleClass="combo-box" />
                   <Region prefHeight="99.0" prefWidth="51.0" />
-                  <ComboBox fx:id="yearComboBox2" prefHeight="26.0" prefWidth="78.0" promptText="2024">
+                  <ComboBox fx:id="yearComboBox2" prefHeight="26.0" prefWidth="78.0" promptText="2024" styleClass="combo-box">
                      <HBox.margin>
                         <Insets right="40.0" />
                      </HBox.margin></ComboBox>
@@ -90,9 +90,9 @@
    <bottom>
       <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="compare_button" mnemonicParsing="false" prefHeight="49.0" prefWidth="87.0" text="Comparar">
+            <Button fx:id="compare_button" mnemonicParsing="false" prefHeight="45.0" prefWidth="87.0" text="Comparar">
                <HBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="15.0" />
                </HBox.margin>
             </Button>
          </children>
