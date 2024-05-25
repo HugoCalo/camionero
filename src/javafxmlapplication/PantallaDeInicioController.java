@@ -2,6 +2,7 @@ package javafxmlapplication;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,16 +19,19 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafxmlapplication.CompararMeses.CompararMesesController;
 import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;
 import javafxmlapplication.CrearGasto.CrearGastoController;
 import javafxmlapplication.creacionCategoria.CreacionCategoriaController;
 import model.Acount;
 import model.Category;
+import model.Charge;
 import model.AcountDAOException;
 
 public class PantallaDeInicioController implements Initializable {
@@ -89,6 +93,25 @@ public class PantallaDeInicioController implements Initializable {
         column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         column_description.setCellValueFactory(new PropertyValueFactory<>("description"));
 
+        // Configurar la columna de precio
+        column_price.setCellFactory(new Callback<TableColumn<Category, Double>, TableCell<Category, Double>>() {
+            @Override
+            public TableCell<Category, Double> call(TableColumn<Category, Double> param) {
+                return new TableCell<Category, Double>() {
+                    @Override
+                    protected void updateItem(Double item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setText(null);
+                        } else {
+                            Category category = getTableView().getItems().get(getIndex());
+                            setText(String.format("%.2f", calculateTotalPrice(category)));
+                        }
+                    }
+                };
+            }
+        });
+
         logo_button.setOnAction(event -> handleLogoButton(event));
         show_mensual_cost.setOnAction(event -> handleShowMensualCost(event));
         compare_month.setOnAction(event -> handleCompareMonth(event));
@@ -105,6 +128,35 @@ public class PantallaDeInicioController implements Initializable {
         add_category.setOnAction(event -> handleAddCategory(event));
         modify_category.setOnAction(event -> handleModifyCategory(event));
         delete_category.setOnAction(event -> handleDeleteCategory(event));
+
+        // Inicialmente deshabilitar los botones
+        updateButtonStates();
+
+        // Añadir listener a la selección de la tabla
+        tableview_category.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> updateButtonStates());
+    }
+
+    private double calculateTotalPrice(Category category) {
+        double totalPrice = 0.0;
+        try {
+            List<Charge> charges = Acount.getInstance().getUserCharges();
+            for (Charge charge : charges) {
+                if (charge.getCategory().equals(category)) {
+                    totalPrice += charge.getCost() * charge.getUnits();
+                }
+            }
+        } catch (AcountDAOException | IOException ex) {
+            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return totalPrice;
+    }
+
+    private void updateButtonStates() {
+        boolean categorySelected = tableview_category.getSelectionModel().getSelectedItem() != null;
+        add_cost.setDisable(!categorySelected);
+        show_category.setDisable(!categorySelected);
+        modify_category.setDisable(!categorySelected);
+        delete_category.setDisable(!categorySelected);
     }
 
     private void handleLogOut(ActionEvent event) {

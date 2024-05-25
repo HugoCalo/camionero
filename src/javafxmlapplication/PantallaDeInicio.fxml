@@ -20,8 +20,8 @@
             <Region prefHeight="145.0" prefWidth="29.0" HBox.hgrow="ALWAYS" />
             <ToolBar prefHeight="70.0" prefWidth="324.0">
               <items>
-                <Button fx:id="show_mensual_cost" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Ver gastos mensuales" />
-                  <Button fx:id="compare_month" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Comparar meses" />
+                <Button fx:id="show_mensual_cost" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Ver gastos mensuales" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="compare_month" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Comparar meses" textAlignment="CENTER" wrapText="true" />
                   <Button layoutX="80.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
               </items>
                <HBox.margin>
@@ -59,25 +59,30 @@
       </VBox>
    </center>
    <left>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="324.0" prefWidth="251.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="338.0" prefWidth="251.0" BorderPane.alignment="CENTER">
          <children>
-            <ToolBar orientation="VERTICAL" prefHeight="362.0" prefWidth="151.0" VBox.vgrow="ALWAYS">
+            <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="335.0" prefWidth="151.0" VBox.vgrow="ALWAYS">
               <items>
-                  <VBox alignment="TOP_CENTER" prefHeight="312.0" prefWidth="141.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="141.0">
                      <children>
-                        <Region prefHeight="15.0" prefWidth="201.0" />
-                      <Button fx:id="add_cost" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="añadir gastos" />
+                        <Region prefHeight="10.0" prefWidth="201.0" />
+                      <Button fx:id="add_cost" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="añadir gastos" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></Button>
                         <Separator prefWidth="200.0" />
-                        <Region prefHeight="15.0" prefWidth="201.0" />
-                        <Button fx:id="show_category" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="Ver detalles " />
+                        <Region prefHeight="10.0" prefWidth="201.0" />
+                        <Button fx:id="show_category" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="Ver detalles " textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></Button>
                         <Separator prefWidth="200.0" />
+                        <Region prefHeight="20.0" prefWidth="201.0" />
+                        <Button fx:id="add_category" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="añadir categoria" textAlignment="CENTER" wrapText="true" />
                         <Region prefHeight="15.0" prefWidth="201.0" />
-                        <Button fx:id="add_category" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="añadir categoria" />
+                        <Button fx:id="modify_category" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="modificar categoria" textAlignment="CENTER" wrapText="true" />
                         <Region prefHeight="15.0" prefWidth="201.0" />
-                        <Button fx:id="modify_category" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="modificar categoria" />
-                        <Region prefHeight="15.0" prefWidth="201.0" />
-                        <Button fx:id="delete_category" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="borrar categoria" />
-                        <Region prefHeight="15.0" prefWidth="201.0" />
+                        <Button fx:id="delete_category" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" text="borrar categoria" textAlignment="CENTER" wrapText="true" />
                      </children>
                   </VBox>
               </items>
@@ -89,6 +94,6 @@
       <Region prefHeight="324.0" prefWidth="86.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Region prefHeight="97.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="84.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

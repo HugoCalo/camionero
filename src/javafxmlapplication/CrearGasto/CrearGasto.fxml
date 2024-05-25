@@ -22,7 +22,7 @@
                      <children>
                         <Label text="Nombre del gasto">
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </VBox.margin>
                            <font>
                               <Font size="14.0" />
@@ -78,6 +78,9 @@
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </Label>
                         <DatePicker fx:id="add_date" prefHeight="25.0" prefWidth="202.0" />
                         <Label alignment="CENTER" prefHeight="20.0" prefWidth="219.0" text="Añadir recibo" textAlignment="CENTER">
@@ -85,7 +88,7 @@
                               <Font size="14.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="47.0" prefWidth="144.0">
@@ -93,7 +96,11 @@
                               <Button fx:id="anadirRecibo_boton" mnemonicParsing="false" text="+" />
                            </children>
                         </HBox>
-                        <ImageView fx:id="anadirRecibo_imagen" fitHeight="127.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true" />
+                        <HBox alignment="CENTER">
+                           <children>
+                              <ImageView fx:id="anadirRecibo_imagen" fitHeight="127.0" fitWidth="196.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
