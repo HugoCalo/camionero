@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TextFormatter;
+import javafxmlapplication.PantallaDeInicioController;
 import model.Acount;
 import model.AcountDAOException;
 import model.Category;
@@ -56,6 +57,7 @@ public class CrearGastoController implements Initializable {
     private ObservableList<Charge> chargeList;
     private Image receiptImage;
     private Charge chargeToModify;
+    private PantallaDeInicioController pantallaDeInicioController;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -97,6 +99,10 @@ public class CrearGastoController implements Initializable {
 
     public void setChargeList(ObservableList<Charge> chargeList) {
         this.chargeList = chargeList;
+    }
+
+    public void setPantallaDeInicioController(PantallaDeInicioController pantallaDeInicioController) {
+        this.pantallaDeInicioController = pantallaDeInicioController;
     }
 
     private void validateFields() {
@@ -148,6 +154,7 @@ public class CrearGastoController implements Initializable {
             chargeList.setAll(Acount.getInstance().getUserCharges().stream()
                 .filter(charge -> charge.getCategory().getName().equals(category.getName()))
                 .collect(Collectors.toList()));
+            pantallaDeInicioController.refreshCategoryList(); // Actualizar la lista de categorías en PantallaDeInicioController
             stage.close(); // Cerrar ventana
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

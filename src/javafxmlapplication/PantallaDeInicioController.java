@@ -243,6 +243,7 @@ public class PantallaDeInicioController implements Initializable {
                 Parent root = loader.load();
 
                 CrearGastoController controller = loader.getController();
+                controller.setPantallaDeInicioController(this); // Pasar referencia del controlador
                 Stage newStage = new Stage();
                 newStage.setTitle("Añadir Gasto");
                 newStage.setScene(new Scene(root));
@@ -368,6 +369,15 @@ public class PantallaDeInicioController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Por favor, selecciona una categoría para eliminar.");
             alert.showAndWait();
+        }
+    }
+
+    public void refreshCategoryList() {
+        try {
+            categoryList.setAll(Acount.getInstance().getUserCategories());
+            tableview_category.refresh();
+        } catch (AcountDAOException | IOException ex) {
+            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
