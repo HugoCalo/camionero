@@ -275,18 +275,17 @@ public class PantallaDeInicioController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/DesgloseDeGastos/DesgloseDeGastos.fxml"));
                 Parent newSceneParent = loader.load();
-                Scene newScene = new Scene(newSceneParent);
+                DesgloseDeGastosController controller = loader.getController();
                 Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 double currentWidth = currentStage.getWidth();
                 double currentHeight = currentStage.getHeight();
-                currentStage.setScene(newScene);
-                currentStage.show();
-
-                DesgloseDeGastosController controller = loader.getController();
                 controller.setStage(currentStage, currentWidth, currentHeight);
                 controller.setLoginStage(loginStage);
                 controller.setCategory(selectedCategory);
-
+                Scene newScene = new Scene(newSceneParent);
+                currentStage.setScene(newScene);
+                currentStage.show();
+          
             } catch (IOException | AcountDAOException e) {
                 e.printStackTrace();
             }

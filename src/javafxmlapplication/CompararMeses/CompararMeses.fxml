@@ -28,7 +28,7 @@
             </Label>
          </children>
          <BorderPane.margin>
-            <Insets left="20.0" top="20.0" />
+            <Insets left="30.0" top="30.0" />
          </BorderPane.margin>
       </HBox>
    </top>
@@ -78,7 +78,7 @@
                   </BarChart>
                </children>
                <padding>
-                  <Insets left="15.0" right="15.0" />
+                  <Insets left="30.0" right="30.0" />
                </padding>
                <VBox.margin>
                   <Insets bottom="15.0" />
@@ -86,13 +86,16 @@
             </HBox>
             <HBox alignment="BOTTOM_RIGHT">
                <children>
-                  <Button fx:id="compare_button" mnemonicParsing="false" prefHeight="37.0" prefWidth="82.0" text="Comparar" />
+                  <Button fx:id="compare_button" mnemonicParsing="false" prefHeight="49.0" prefWidth="87.0" text="Comparar">
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin></Button>
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <padding>
-                  <Insets right="15.0" />
+                  <Insets right="30.0" />
                </padding>
             </HBox>
          </children>
