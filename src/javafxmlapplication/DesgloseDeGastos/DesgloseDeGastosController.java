@@ -1,3 +1,4 @@
+// DesgloseDeGastosController.java
 package javafxmlapplication.DesgloseDeGastos;
 
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class DesgloseDeGastosController implements Initializable {
 
     private Stage stage;
     private Stage loginStage;
+    private PantallaDeInicioController pantallaDeInicioController;
 
     @FXML
     private Button volverainicio_boton;
@@ -85,6 +87,10 @@ public class DesgloseDeGastosController implements Initializable {
         this.loginStage = loginStage;
     }
 
+    public void setPantallaDeInicioController(PantallaDeInicioController pantallaDeInicioController) {
+        this.pantallaDeInicioController = pantallaDeInicioController;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -127,7 +133,7 @@ public class DesgloseDeGastosController implements Initializable {
             try {
                 eliminarGasto(selectedCharge);
             } catch (IOException | AcountDAOException e) {
-                
+                Logger.getLogger(DesgloseDeGastosController.class.getName()).log(Level.SEVERE, null, e);
             }
         });
 
@@ -164,7 +170,7 @@ public class DesgloseDeGastosController implements Initializable {
             controller.setStage(currentStage);
             controller.setStageLogin(loginStage);
         } catch (IOException e) {
-            
+            Logger.getLogger(DesgloseDeGastosController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -196,9 +202,10 @@ public class DesgloseDeGastosController implements Initializable {
             controller.setStage(newStage);
             controller.setCategory(category);
             controller.setChargeList(chargesList);
+            controller.setPantallaDeInicioController(pantallaDeInicioController); // Pasar el controlador
             newStage.show();
         } catch (IOException e) {
-           
+            Logger.getLogger(DesgloseDeGastosController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -213,10 +220,11 @@ public class DesgloseDeGastosController implements Initializable {
             controller.setStage(newStage);
             controller.setCategory(category);
             controller.setChargeList(chargesList);
+            controller.setPantallaDeInicioController(pantallaDeInicioController); // Pasar el controlador
             controller.loadChargeData(charge); // Pass the charge data to the controller
             newStage.show();
         } catch (IOException e) {
-            
+            Logger.getLogger(DesgloseDeGastosController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -225,6 +233,7 @@ public class DesgloseDeGastosController implements Initializable {
             boolean success = Acount.getInstance().removeCharge(charge);
             if (success) {
                 chargesList.remove(charge);
+                tableview_gastos_cat.getSelectionModel().clearSelection();
                 tableview_gastos_cat.refresh();
             } else {
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -245,5 +254,9 @@ public class DesgloseDeGastosController implements Initializable {
     private void updateButtonsState(boolean enable) {
         modificar_gasto_boton.setDisable(!enable);
         eliminar_gasto_boton.setDisable(!enable);
+    }
+
+    public void refreshCategoryList() throws AcountDAOException, IOException {
+        pantallaDeInicioController.refreshCategoryList();
     }
 }

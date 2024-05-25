@@ -1,7 +1,9 @@
 package javafxmlapplication;
 
+import java.awt.Insets;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -24,7 +26,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafxmlapplication.CompararMeses.CompararMesesController;
 import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;
 import javafxmlapplication.CrearGasto.CrearGastoController;
@@ -81,29 +82,7 @@ public class PantallaDeInicioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            categoryList = FXCollections.observableArrayList(Acount.getInstance().getUserCategories());
-        } catch (AcountDAOException | IOException ex) {
-            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        tableview_category.setItems(categoryList);
-
-        column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        column_description.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-        // Configurar la columna de precio
-        column_price.setCellFactory((TableColumn<Category, Double> param) -> new TableCell<Category, Double>() {
-            @Override
-            protected void updateItem(Double item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setText(null);
-                } else {
-                    Category category = getTableView().getItems().get(getIndex());
-                    setText(String.format("%.2f", calculateTotalPrice(category)));
-                }
-            }
-        });
+        refreshCategoryList();
 
         logo_button.setOnAction(event -> handleLogoButton(event));
         show_mensual_cost.setOnAction(event -> handleShowMensualCost(event));
@@ -374,10 +353,27 @@ public class PantallaDeInicioController implements Initializable {
 
     public void refreshCategoryList() {
         try {
-            categoryList.setAll(Acount.getInstance().getUserCategories());
-            tableview_category.refresh();
+            categoryList = FXCollections.observableArrayList(Acount.getInstance().getUserCategories());
+            tableview_category.setItems(categoryList);
         } catch (AcountDAOException | IOException ex) {
             Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        column_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        column_description.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        column_price.setCellFactory((TableColumn<Category, Double> param) -> new TableCell<Category, Double>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    Category category = getTableView().getItems().get(getIndex());
+                    setText(String.format("%.2f", calculateTotalPrice(category)));
+                }
+            }
+        });
     }
+    
 }

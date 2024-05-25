@@ -1,13 +1,18 @@
+// CrearGastoController.java
 package javafxmlapplication.CrearGasto;
 
+import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +28,9 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Popup;
 import javafxmlapplication.PantallaDeInicioController;
 import model.Acount;
 import model.AcountDAOException;
@@ -154,7 +162,9 @@ public class CrearGastoController implements Initializable {
             chargeList.setAll(Acount.getInstance().getUserCharges().stream()
                 .filter(charge -> charge.getCategory().getName().equals(category.getName()))
                 .collect(Collectors.toList()));
-            pantallaDeInicioController.refreshCategoryList(); // Actualizar la lista de categorías en PantallaDeInicioController
+            if (pantallaDeInicioController != null) {
+                pantallaDeInicioController.refreshCategoryList(); // Actualizar la lista de categorías en PantallaDeInicioController
+            }
             stage.close(); // Cerrar ventana
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -216,4 +226,5 @@ public class CrearGastoController implements Initializable {
         titulo_crear_gasto.setText("Modificar Gasto");
         validateFields();
     }
+  
 }
