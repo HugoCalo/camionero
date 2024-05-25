@@ -1,18 +1,14 @@
-// CrearGastoController.java
 package javafxmlapplication.CrearGasto;
 
 import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -118,7 +114,8 @@ public class CrearGastoController implements Initializable {
                 || costeGasto_campo.getText().trim().isEmpty()
                 || descripcionGasto_campo.getText().trim().isEmpty()
                 || Unidades_campo.getText().trim().isEmpty()
-                || add_date.getValue() == null;
+                || add_date.getValue() == null
+                || Integer.parseInt(Unidades_campo.getText()) < 1;
         botonAceptar.setDisable(disableButton);
     }
 
@@ -226,5 +223,4 @@ public class CrearGastoController implements Initializable {
         titulo_crear_gasto.setText("Modificar Gasto");
         validateFields();
     }
-  
 }
