@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.CrearCuentaController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="anchor-pane-right" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.CrearCuentaController">
    <children>
-      <Label fx:id="titulin" alignment="CENTER" prefHeight="70.0" prefWidth="600.0" text="Crear Cuenta">
+      <Label fx:id="titulin" alignment="CENTER" prefHeight="70.0" prefWidth="600.0" styleClass="label-title" text="Crear Cuenta">
          <font>
             <Font name="System Italic" size="34.0" />
          </font>
@@ -36,15 +36,18 @@
          <VBox.margin>
             <Insets top="30.0" />
          </VBox.margin>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
       </HBox>
       <HBox>
          <children>
-            <TextField fx:id="nameField" maxWidth="250.0" prefHeight="25.0" prefWidth="103.0" promptText="TuNombre">
+            <TextField fx:id="nameField" maxWidth="250.0" prefHeight="25.0" prefWidth="103.0">
                <HBox.margin>
                   <Insets left="40.0" />
                </HBox.margin>
             </TextField>
-            <TextField fx:id="surnameField" alignment="BOTTOM_LEFT" maxWidth="300.0" prefHeight="26.0" prefWidth="206.0" promptText="TusApellidos">
+            <TextField fx:id="surnameField" alignment="BOTTOM_LEFT" maxWidth="300.0" prefHeight="26.0" prefWidth="206.0">
                <HBox.margin>
                   <Insets left="40.0" />
                </HBox.margin>
@@ -77,13 +80,13 @@
                <children>
                   <Label text="Usuario">
                      <padding>
-                        <Insets top="10.0" />
+                        <Insets left="7.0" top="10.0" />
                      </padding>
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="nicknameField" maxWidth="250.0" prefHeight="26.0" prefWidth="250.0" promptText="NombreDeUsuario">
+                  <TextField fx:id="nicknameField" maxWidth="250.0" prefHeight="26.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
@@ -98,13 +101,13 @@
                   </Label>
                   <Label text="Correo electronico">
                      <padding>
-                        <Insets top="10.0" />
+                        <Insets left="7.0" top="10.0" />
                      </padding>
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="emailField" maxWidth="250.0" prefWidth="250.0" promptText="TuEmail@dominio.com">
+                  <TextField fx:id="emailField" maxWidth="250.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
@@ -119,13 +122,13 @@
                   </Label>
                   <Label text="Contraseña">
                      <padding>
-                        <Insets top="10.0" />
+                        <Insets left="7.0" top="10.0" />
                      </padding>
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
                   </Label>
-                  <PasswordField fx:id="passwordField" maxWidth="250.0" prefHeight="26.0" prefWidth="250.0" promptText="Numeros/Simbolos/Letras">
+                  <PasswordField fx:id="passwordField" maxWidth="250.0" prefHeight="26.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
@@ -140,13 +143,13 @@
                   </Label>
                   <Label layoutX="50.0" layoutY="68.0" text="Confirmar contraseña">
                      <padding>
-                        <Insets top="10.0" />
+                        <Insets left="7.0" top="10.0" />
                      </padding>
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
                   </Label>
-                  <PasswordField fx:id="confirmar_password" layoutX="50.0" layoutY="100.0" maxWidth="250.0" prefHeight="26.0" prefWidth="250.0" promptText="RepetirContraseña">
+                  <PasswordField fx:id="confirmar_password" layoutX="50.0" layoutY="100.0" maxWidth="250.0" prefHeight="26.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
@@ -168,7 +171,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Button fx:id="añadir_imagen_perfil" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" text="+">
+                  <Button fx:id="añadir_imagen_perfil" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" styleClass="button-login" text="+">
                      <VBox.margin>
                         <Insets left="140.0" />
                      </VBox.margin>
@@ -187,12 +190,12 @@
             <Insets bottom="20.0" left="250.0" />
          </VBox.margin>
          <children>
-            <Button fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" text="Registrarse" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" styleClass="button-login" text="Registrarse" textAlignment="CENTER" wrapText="true">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="cancelar_registro_boton" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" text="Cancelar">
+            <Button fx:id="cancelar_registro_boton" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" styleClass="button-login" text="Cancelar">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>

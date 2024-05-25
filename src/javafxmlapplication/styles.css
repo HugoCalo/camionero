@@ -1,72 +1,86 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 23 may 2024, 18:54:15
-    Author     : hugoc
-*/
-
-/* styles.css */
-
-/* Fondo de la raíz */
-.root {
-    -fx-background-color: #0C0C0C;
-    -fx-text-fill: #ffffff;
+/* Estilos para el SplitPane */
+.split-pane {
+    -fx-background-color: transparent;
 }
 
-/* Estilo para botones */
-.button {
-    -fx-background-color: #FF6600;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 14px;
-    -fx-padding: 10px;
-    -fx-background-radius: 20px; /* Bordes redondeados */
-    -fx-border-radius: 20px; /* Bordes redondeados */
+.split-pane > .split-pane-divider {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
 }
 
-/* Estilo para campos de texto */
+/* Estilos para el AnchorPane izquierdo (color negro) */
+.anchor-pane-left {
+    -fx-background-color: #000000;
+}
+
+/* Estilos para el AnchorPane derecho (color #272727) */
+.anchor-pane-right {
+    -fx-background-color: #272727;
+}
+
+/* Estilo para el Label del título */
+.label-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 36px !important;
+    -fx-font-weight: bold;
+}
+
+/* Estilo para los TextField */
 .text-field {
-    -fx-background-color: #322E2C;
+    -fx-background-color: #383838;
     -fx-text-fill: #ffffff;
-    -fx-border-color: transparent;
-    -fx-background-radius: 20px; /* Bordes redondeados */
-    -fx-border-radius: 20px; /* Bordes redondeados */
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
 }
 
 .text-field:focused {
-    -fx-border-color: #FF6600; /* Borde naranja cuando está en foco */
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
 }
 
-/* Estilo para etiquetas */
+/* Estilo para los PasswordField */
+.password-field {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
+}
+
+.password-field .text {
+    -fx-text-fill: #ffffff; /* Color de los puntos de la contraseña */
+}
+
+.password-field:focused {
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
+}
+
+/* Estilo para los botones de inicio de sesión */
+.button-login {
+    -fx-background-color: #F57D0D;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+/* Estilo para los Separators */
+.separator {
+    -fx-background-color: #ffffff;
+}
+
+/* Estilo para todos los Labels (excepto el título) */
 .label {
     -fx-text-fill: #ffffff;
-    -fx-font-family: 'Serif'; /* Fuente formal */
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
 }
 
-/* Estilo para ToolBars */
-.tool-bar {
-    -fx-background-color: #322E2C;
-    -fx-background-radius: 20px; /* Bordes redondeados */
-    -fx-border-radius: 20px; /* Bordes redondeados */
-}
-
-/* Estilo para TableViews */
-.table-view {
-    -fx-background-color: #322E2C;
-    -fx-background-radius: 20px; /* Bordes redondeados */
-    -fx-border-radius: 20px; /* Bordes redondeados */
-    -fx-text-fill: #ffffff;
-}
-
-.table-view .column-header-background {
-    -fx-background-color: #322E2C;
-    -fx-background-radius: 20px; /* Bordes redondeados */
-}
-
-.table-view .table-cell {
-    -fx-background-color: #322E2C;
-    -fx-background-radius: 20px; /* Bordes redondeados */
-    -fx-text-fill: #ffffff;
+/* Estilo específico para el Label de error */
+.label-error {
+    -fx-font-size: 12px;
+    -fx-text-fill: red;
 }

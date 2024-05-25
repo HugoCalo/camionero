@@ -12,72 +12,64 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.InicioDeSesionController">
+<SplitPane dividerPositions="0.3779264214046823" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.InicioDeSesionController">
   <items>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0">
+    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0" styleClass="anchor-pane-left">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="274.0" fitWidth="497.0" layoutX="-131.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../OneDrive/Pictures/20210405_152242~2.jpg" />
+                  <Image url="@imagenes/blackleaf logo xicotet.png" />
                </image>
             </ImageView>
-         </children></AnchorPane>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="600.0">
+         </children>
+    </AnchorPane>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="anchor-pane-right">
          <children>
             <VBox layoutX="40.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="434.0" prefWidth="294.0">
                <children>
-                  <Label prefHeight="119.0" prefWidth="294.0" text="Inicio de sesión">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Label>
-                  <Label text="Usuario">
+                  <Label prefHeight="119.0" prefWidth="294.0" styleClass="label-title" text="Inicio de sesión" />
+                  <Label styleClass="label" text="Usuario">
                      <padding>
-                        <Insets top="10.0" />
-                     </padding></Label>
-                  <TextField fx:id="usernameField" />
-                  <Label text="Contraseña">
+                        <Insets left="6.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="usernameField" styleClass="text-field" />
+                  <Label styleClass="label" text="Contraseña">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <padding>
-                        <Insets top="10.0" />
-                     </padding></Label>
-                  <PasswordField fx:id="passwordField" />
-                  <Label fx:id="aviso_usuario_login" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="294.0" text="Usuario o contraseña incorrectos" textFill="RED">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
+                        <Insets left="6.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <PasswordField fx:id="passwordField" styleClass="password-field" />
+                  <Label fx:id="aviso_usuario_login" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="294.0" styleClass="label-error" text="Usuario o contraseña incorrectos">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="aviso_password_login" layoutX="10.0" layoutY="52.0" text="Contraseña incorrecta" textFill="RED" visible="false">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="button_init_sesion" mnemonicParsing="false" prefHeight="35.0" prefWidth="293.0" text="Iniciar sesión">
+                  <Label fx:id="aviso_password_login" layoutX="10.0" layoutY="52.0" styleClass="label-error" text="Contraseña incorrecta" visible="false" />
+                  <Button fx:id="button_init_sesion" mnemonicParsing="false" prefHeight="35.0" prefWidth="293.0" styleClass="button-login" text="Iniciar sesión">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Button>
                   <Region prefHeight="57.0" prefWidth="294.0" />
-                  <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="47.0" prefWidth="294.0" text="¿No tienes cuenta?">
+                  <Separator prefHeight="7.0" prefWidth="237.0" styleClass="separator" />
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="47.0" prefWidth="294.0" styleClass="label" text="¿No tienes cuenta?">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Button fx:id="button_registro" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="297.0" text="Regístrate">
+                  <Button fx:id="button_registro" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="297.0" styleClass="button-login" text="Regístrate">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
-         </children></AnchorPane>
+         </children>
+    </AnchorPane>
   </items>
 </SplitPane>

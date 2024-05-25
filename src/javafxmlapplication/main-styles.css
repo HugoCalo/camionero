@@ -1,0 +1,80 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 25 may 2024, 19:13:56
+    Author     : hugoc
+*/
+
+/* Estilo para el BorderPane */
+.border-pane {
+    -fx-background-color: #272727;
+}
+
+/* Estilo para los ToolBars */
+.tool-bar {
+    -fx-background-color: #383838;
+    -fx-background-radius: 10px;
+}
+
+/* Estilo para los TableView */
+.table-view {
+    -fx-background-color: #383838;
+    -fx-background-radius: 10px;
+}
+
+/* Estilo para los botones */
+.button-orange {
+    -fx-background-color: #F57D0D;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.button-transparent {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+/* Estilo para los botones con imagen */
+.button-image {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.button-logo {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-background-image: url("ruta/de/tu/logo.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.button-profile, .button-logout {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+/* Estilo para el botón de perfil */
+.button-profile {
+    -fx-background-image: url("ruta/de/tu/imagen_perfil.png");
+}
+
+/* Estilo para el botón de logout */
+.button-logout {
+    -fx-background-image: url("ruta/de/tu/imagen_logout.png");
+}
+
+/* Estilo para el foco en los elementos seleccionados */
+:focused {
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 2px;
+    -fx-background-insets: 2;
+}
