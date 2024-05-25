@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" prefHeight="457.0" prefWidth="830.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" maxHeight="40.0" maxWidth="839.0" minHeight="30.0" prefHeight="30.0" prefWidth="839.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label text="Usuario: " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usuario" text="Usuario">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="20.0" prefWidth="728.0">
+               <children>
+                  <Label text="Nombre real: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nombre_apellidos_label" text="nombre y apellidos">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="40.0" maxWidth="857.0" minHeight="30.0" prefHeight="30.0" prefWidth="857.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label text="Fecha Actual: " HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fecha_label" text="fecha">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <HBox VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" top="30.0" />
+               </VBox.margin>
+               <children>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="750.0" HBox.hgrow="ALWAYS">
+                     <content>
+                        <TableView fx:id="tableview" prefHeight="181.0" prefWidth="547.0">
+                          <columns>
+                              <TableColumn fx:id="NombreGasto_column" prefWidth="75.0" text="Nombre del Gasto" />
+                            <TableColumn fx:id="categoria_column" prefWidth="75.0" text="Categoría" />
+                              <TableColumn fx:id="fecha_column" prefWidth="75.0" text="Fecha" />
+                            <TableColumn fx:id="coste_column" prefWidth="75.0" text="Coste" />
+                              <TableColumn fx:id="unidades_column" prefWidth="75.0" text="Unidades" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+                  <PieChart HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="91.0" prefWidth="611.0">
+               <children>
+                  <Label text="GASTO TOTAL:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="gasto_total" contentDisplay="BOTTOM" text="gasto total">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="imprimir_buton" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Imprimir">
+               <HBox.margin>
+                  <Insets bottom="30.0" right="30.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="volver_buton" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Volver">
+               <HBox.margin>
+                  <Insets bottom="30.0" right="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="30.0" top="30.0" />
+         </BorderPane.margin>
+         <children>
+            <Button fx:id="volver_inicio_buton" mnemonicParsing="false" prefHeight="72.0" prefWidth="168.0" text="Button" />
+            <Region maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="82.0" HBox.hgrow="ALWAYS" />
+            <Label alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Resumen de gastos">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Region maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="95.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </Region>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
