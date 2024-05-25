@@ -10,7 +10,7 @@
 
 /* Estilos para el AnchorPane izquierdo (color negro) */
 .anchor-pane-left {
-    -fx-background-color: #000000;
+    -fx-background-color: #111111;
 }
 
 /* Estilos para el AnchorPane derecho (color #272727) */

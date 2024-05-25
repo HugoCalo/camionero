@@ -58,7 +58,6 @@ public class InicioDeSesionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         aviso_usuario_login.setVisible(false);
         usernameField.setOnAction(event -> passwordField.requestFocus());
-        passwordField.setOnAction(event -> button_init_sesion.requestFocus());
         
         button_registro.setOnAction(event -> {
             try {

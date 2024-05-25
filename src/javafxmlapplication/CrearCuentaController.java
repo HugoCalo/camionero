@@ -69,7 +69,6 @@ public class CrearCuentaController implements Initializable {
         nicknameField.setOnAction(event -> emailField.requestFocus());
         emailField.setOnAction(event -> passwordField.requestFocus());
         passwordField.setOnAction(event -> confirmar_password.requestFocus());
-        confirmar_password.setOnAction(event -> registerButton.requestFocus());
     }
 
     private void setupButtonActions() {

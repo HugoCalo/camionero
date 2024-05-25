@@ -30,6 +30,7 @@ import javafxmlapplication.CompararMeses.CompararMesesController;
 import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;
 import javafxmlapplication.CrearGasto.CrearGastoController;
 import javafxmlapplication.creacionCategoria.CreacionCategoriaController;
+import javafxmlapplication.mostrarGastos.MostrarGastosController;
 import model.Acount;
 import model.Category;
 import model.Charge;
@@ -100,6 +101,7 @@ public class PantallaDeInicioController implements Initializable {
         add_category.setOnAction(event -> handleAddCategory(event));
         modify_category.setOnAction(event -> handleModifyCategory(event));
         delete_category.setOnAction(event -> handleDeleteCategory(event));
+        
 
         // Inicialmente deshabilitar los botones
         updateButtonStates();
@@ -164,11 +166,27 @@ public class PantallaDeInicioController implements Initializable {
     }
 
     private void handleShowMensualCost(ActionEvent event) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Show Mensual Cost");
-        alert.setHeaderText(null);
-        alert.setContentText("Showing mensual cost!");
-        alert.showAndWait();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/mostrarGastos/mostrarGastos.fxml"));
+            Parent newSceneParent = loader.load();
+
+            // Obtener el controlador de la nueva escena
+            MostrarGastosController controller = loader.getController();
+
+            // Configurar las propiedades necesarias en el controlador
+            Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            double currentWidth = currentStage.getWidth();
+            double currentHeight = currentStage.getHeight();
+            controller.setStage(currentStage, currentWidth, currentHeight);
+            controller.setLoginStage(loginStage); // Asegurarse de pasar loginStage al nuevo controlador
+
+            // Cambiar a la nueva escena
+            Scene newScene = new Scene(newSceneParent);
+            currentStage.setScene(newScene);
+            currentStage.show();
+        } catch (IOException e) {
+            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     private void handleCompareMonth(ActionEvent event) {

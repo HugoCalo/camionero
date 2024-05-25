@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.mostrarGastos.MostrarGastosController">
    <center>
       <VBox alignment="CENTER" prefHeight="457.0" prefWidth="830.0">
          <children>
@@ -86,7 +85,7 @@
                   <Insets left="40.0" right="40.0" top="30.0" />
                </VBox.margin>
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="750.0" HBox.hgrow="ALWAYS">
+                  <ScrollPane fx:id="scroll_pane" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="750.0" HBox.hgrow="ALWAYS">
                      <content>
                         <TableView fx:id="tableview" prefHeight="181.0" prefWidth="547.0">
                           <columns>
@@ -102,10 +101,10 @@
                         </TableView>
                      </content>
                   </ScrollPane>
-                  <PieChart HBox.hgrow="ALWAYS" />
+                  <PieChart fx:id="pieChart" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="91.0" prefWidth="611.0">
+            <HBox alignment="CENTER" prefHeight="91.0" prefWidth="611.0" VBox.vgrow="ALWAYS">
                <children>
                   <Label text="GASTO TOTAL:">
                      <font>
@@ -125,28 +124,12 @@
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets bottom="30.0" top="20.0" />
                </VBox.margin>
             </HBox>
          </children>
       </VBox>
    </center>
-   <bottom>
-      <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="imprimir_buton" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Imprimir">
-               <HBox.margin>
-                  <Insets bottom="30.0" right="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="volver_buton" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Volver">
-               <HBox.margin>
-                  <Insets bottom="30.0" right="30.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-   </bottom>
    <top>
       <HBox BorderPane.alignment="CENTER">
          <BorderPane.margin>

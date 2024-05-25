@@ -49,7 +49,6 @@ public class CreacionCategoriaController implements Initializable {
         descripcionCategoria.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
 
         nombreCategoria.setOnAction(event -> descripcionCategoria.requestFocus());
-        descripcionCategoria.setOnAction(event -> botonAceptar.requestFocus());
         botonAceptar.setOnAction(event -> {
             try {
                 handleAceptar();
