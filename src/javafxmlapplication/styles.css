@@ -84,3 +84,8 @@
     -fx-font-size: 12px;
     -fx-text-fill: red;
 }
+
+/* Estilos para los Stage (borde y fondo gris oscuro) */
+.root {
+    -fx-background-color: #2B2B2B; /* Gris muy oscuro */
+}

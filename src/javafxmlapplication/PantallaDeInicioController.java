@@ -1,6 +1,7 @@
 package javafxmlapplication;
 
 import java.awt.Insets;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
@@ -25,6 +26,8 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafxmlapplication.CompararMeses.CompararMesesController;
 import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;
@@ -38,8 +41,6 @@ import model.AcountDAOException;
 
 public class PantallaDeInicioController implements Initializable {
 
-    @FXML
-    private Button logo_button;
     @FXML
     private Button show_mensual_cost;
     @FXML
@@ -72,6 +73,8 @@ public class PantallaDeInicioController implements Initializable {
     private Stage stage;
     private Stage loginStage;
     private ObservableList<Category> categoryList;
+    @FXML
+    private ImageView imagendeperfil;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -85,7 +88,6 @@ public class PantallaDeInicioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         refreshCategoryList();
 
-        logo_button.setOnAction(event -> handleLogoButton(event));
         show_mensual_cost.setOnAction(event -> handleShowMensualCost(event));
         compare_month.setOnAction(event -> handleCompareMonth(event));
         show_profile.setOnAction(event -> {
@@ -108,6 +110,24 @@ public class PantallaDeInicioController implements Initializable {
 
         // Añadir listener a la selección de la tabla
         tableview_category.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> updateButtonStates());
+
+        // Cargar y mostrar la imagen de perfil del usuario
+        loadUserProfileImage();
+    }
+
+    private void loadUserProfileImage() {
+        try {
+            // Obtener la imagen del usuario logueado
+            Acount acount = Acount.getInstance();
+            if (acount != null && acount.getLoggedUser() != null) {
+                Image userImage = acount.getLoggedUser().getImage();
+                if (userImage != null) {
+                    imagendeperfil.setImage(userImage);
+                }
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     private double calculateTotalPrice(Category category) {
@@ -149,7 +169,7 @@ public class PantallaDeInicioController implements Initializable {
                         loginStage.show();
                     }
                 } catch (IOException e) {
-                    
+
                 } catch (AcountDAOException ex) {
                     Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -276,9 +296,9 @@ public class PantallaDeInicioController implements Initializable {
                 Scene newScene = new Scene(newSceneParent);
                 currentStage.setScene(newScene);
                 currentStage.show();
-          
+
             } catch (IOException | AcountDAOException e) {
-                
+
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -393,5 +413,4 @@ public class PantallaDeInicioController implements Initializable {
             }
         });
     }
-    
 }

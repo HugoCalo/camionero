@@ -1,80 +1,133 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 25 may 2024, 19:13:56
-    Author     : hugoc
-*/
-
-/* Estilo para el BorderPane */
-.border-pane {
-    -fx-background-color: #272727;
-}
-
-/* Estilo para los ToolBars */
-.tool-bar {
+/* Toolbar con bordes muy redondeados y color 383838 */
+.toolbar {
     -fx-background-color: #383838;
-    -fx-background-radius: 10px;
+    -fx-background-radius: 20; /* Bordes muy redondeados */
 }
 
-/* Estilo para los TableView */
+/* HBox de color 111111 */
+.hbox {
+    -fx-background-color: #111111;
+}
+
+/* Botón con bordes redondeados y color F57D0D, focus en blanco y más ancho */
+.button-rounded-orange {
+    -fx-background-color: #F57D0D;
+    -fx-background-radius: 20; /* Bordes redondeados */
+    -fx-text-fill: white;
+    -fx-padding: 10 20; /* Un poco ancho */
+}
+
+.button-rounded-orange:focused {
+    -fx-border-color: white;
+    -fx-border-width: 4;
+    -fx-border-radius: 20; /* Mantener el mismo radio de borde */
+}
+
+/* Botón redondo y transparente con el focus en negro */
+.button-round-transparent {
+    -fx-background-color: transparent;
+    -fx-background-radius: 50; /* Redondo */
+    -fx-text-fill: white;
+    -fx-padding: 10;
+}
+
+.button-round-transparent:focused {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 50;
+}
+
+/* Botón redondo y de color 383838 con el focus en negro */
+.button-round-grey {
+    -fx-background-color: #383838;
+    -fx-background-radius: 50; /* Redondo */
+    -fx-text-fill: white;
+    -fx-padding: 10;
+}
+
+.button-round-grey:focused {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 50;
+}
+
+/* Botón con bordes redondeados como el primero */
+.button-rounded {
+    -fx-background-color: #F57D0D;
+    -fx-background-radius: 20; /* Bordes redondeados */
+    -fx-text-fill: white;
+    -fx-padding: 10 20; /* Un poco ancho */
+}
+
+.button-rounded:focused {
+    -fx-border-color: white;
+    -fx-border-width: 4;
+    -fx-border-radius: 20;
+}
+
+/* TableView con bordes redondeados */
 .table-view {
     -fx-background-color: #383838;
-    -fx-background-radius: 10px;
+    -fx-border-color: #383838; /* Mismo color que el fondo */
+    -fx-border-radius: 20; /* Bordes redondeados */
+    -fx-padding: 0;
+    -fx-cell-size: 25px;
 }
 
-/* Estilo para los botones */
-.button-orange {
+.table-view .column-header-background {
+    -fx-background-color: #383838; /* Mismo color que el fondo */
+    -fx-border-color: #383838; /* Bordes invisibles */
+}
+
+.table-view .column-header, .table-view .column-header .label {
+    -fx-text-fill: white; /* Texto de los nombres de las columnas en blanco */
+}
+
+.table-view .table-row-cell {
+    -fx-text-fill: white; /* Texto dentro de la tabla en blanco */
+    -fx-border-color: #383838; /* Bordes invisibles */
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white; /* Asegura que el texto de las celdas sea blanco */
+    -fx-border-color: #383838; /* Bordes invisibles */
+}
+
+.table-view:focused {
+    -fx-border-color: #383838; /* Bordes invisibles */
+    -fx-border-width: 4;
+}
+
+/* Fila seleccionada con fondo naranja */
+.table-view .table-row-cell:filled:selected {
     -fx-background-color: #F57D0D;
-    -fx-text-fill: #ffffff;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
 }
 
-.button-transparent {
-    -fx-background-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
+.table-view .table-row-cell:selected .table-cell {
+    -fx-background-color: #F57D0D;
+    -fx-text-fill: white; /* Texto de la fila seleccionada en blanco */
 }
 
-/* Estilo para los botones con imagen */
-.button-image {
-    -fx-background-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
+/* BorderPane de fondo color 272727 */
+.border-pane {
+    -fx-background-color: #272727;
+    -fx-border-color: #272727; /* Bordes invisibles */
 }
 
-.button-logo {
-    -fx-background-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-background-image: url("ruta/de/tu/logo.png");
-    -fx-background-size: contain;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
+/* ScrollPane con bordes redondeados y color del BorderPane */
+.scroll-pane {
+    -fx-background-color: #272727;
+    -fx-border-color: #272727;
+    -fx-border-radius: 20; /* Bordes redondeados */
 }
 
-.button-profile, .button-logout {
-    -fx-background-radius: 50%;
-    -fx-border-radius: 50%;
-    -fx-background-size: cover;
-    -fx-background-position: center;
+.scroll-pane .scroll-bar {
+    -fx-background-color: #272727; /* Mismo color que el BorderPane */
+    -fx-padding: 0;
 }
 
-/* Estilo para el botón de perfil */
-.button-profile {
-    -fx-background-image: url("ruta/de/tu/imagen_perfil.png");
-}
-
-/* Estilo para el botón de logout */
-.button-logout {
-    -fx-background-image: url("ruta/de/tu/imagen_logout.png");
-}
-
-/* Estilo para el foco en los elementos seleccionados */
-:focused {
-    -fx-border-color: #F57D0D;
-    -fx-border-width: 2px;
-    -fx-background-insets: 2;
+/* Estilo para ImageView circular */
+.image-view {
+    -fx-background-radius: 50%; /* Hacer que el fondo del ImageView sea redondo */
+    -fx-clip: circle; /* Aplicar una máscara circular */
 }
