@@ -43,39 +43,49 @@
 }
 
 /* Estilo para la TableView */
+.table-view .table-cell {
+    -fx-alignment: CENTER; /* Centra el contenido de todas las celdas por defecto */
+}
+
+.table-view .description-cell {
+    -fx-alignment: CENTER_LEFT; /* Alinea el contenido de la columna de descripción a la izquierda */
+}
+
+/* Estilo para la TableView */
+
+
+
 .table-view {
-    -fx-background-color: #383838;
-    -fx-text-fill: #ffffff;
-    -fx-background-radius: 20px;
-    -fx-border-radius: 20px;
+    -fx-background-color: #333333; /* Fondo de la tabla */
+    -fx-table-cell-border-color: transparent; /* Bordes de las celdas */
+    -fx-padding: 10; /* Espaciado interior de la tabla */
 }
 
 .table-view .column-header-background {
-    -fx-background-color: #272727;
+    -fx-background-color: #333333; /* Fondo del encabezado */
 }
 
-.table-view .filler {
-    -fx-background-color: #383838;
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #333333; /* Fondo de las columnas */
 }
 
 .table-view .table-row-cell {
-    -fx-background-color: #383838;
-    -fx-border-color: #272727;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #333333; /* Fondo de las filas */
 }
 
-.table-view .table-row-cell:focused, .table-view .table-row-cell:selected {
-    -fx-background-color: #555555;
-    -fx-text-fill: #ffffff;
-}
-
-.table-view .table-row-cell:focused .table-cell, .table-view .table-row-cell:selected .table-cell {
-    -fx-background-color: #555555;
+.table-view .table-row-cell:filled:selected, .table-view .table-row-cell:selected {
+    -fx-background-color: #ff8800; /* Color de la fila seleccionada */
+    -fx-text-fill: #ffffff; /* Color del texto en la fila seleccionada */
 }
 
 .table-view .table-cell {
-    -fx-border-color: #272727;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: transparent; /* Fondo de las celdas */
+    -fx-text-fill: #ffffff; /* Color del texto */
+}
+
+.table-view .table-cell:filled:selected, .table-view .table-cell:selected {
+    -fx-background-color: #ff8800; /* Color de la celda seleccionada */
+    -fx-text-fill: #ffffff; /* Color del texto en la celda seleccionada */
 }
 
 /* Estilo para el ScrollPane */
@@ -123,6 +133,13 @@
     -fx-text-fill: #ffffff;
 }
 
+.button-transparente {
+    -fx-background-color: #272727;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
 .combo-box .arrow-button {
     -fx-background-color: #383838;
     -fx-background-radius: 20px;
@@ -138,3 +155,16 @@
     -fx-control-inner-background: #383838;
     -fx-text-fill: #ffffff;
 }
+
+ Cambia el color de fondo de los elementos cuando el cursor está sobre ellos 
+.combo-box .list-cell:hover {
+    -fx-background-color: #ff8800; /* Color de fondo naranja */
+    -fx-text-fill: #ffffff; /* Color del texto blanco */
+}
+
+ Cambia el color de fondo del elemento seleccionado 
+.combo-box .list-cell:selected {
+    -fx-background-color: #ff8800; /* Color de fondo naranja */
+    -fx-text-fill: #ffffff; /* Color del texto blanco */
+}
+

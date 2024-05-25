@@ -20,7 +20,7 @@
    <top>
       <HBox prefHeight="83.0" prefWidth="780.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="return_pantalla_principal" mnemonicParsing="false" prefHeight="101.0" prefWidth="140.0" text="Volver" />
+            <Button fx:id="return_pantalla_principal" mnemonicParsing="false" prefHeight="101.0" prefWidth="140.0" styleClass="button-transparente" />
             <Label prefHeight="102.0" prefWidth="471.0" styleClass="label-title" text="Comparacion de meses ">
                <font>
                   <Font size="41.0" />

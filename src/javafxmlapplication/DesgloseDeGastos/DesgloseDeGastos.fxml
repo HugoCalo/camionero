@@ -24,7 +24,7 @@
          <children>
             <HBox HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="volverainicio_boton" mnemonicParsing="false" HBox.hgrow="ALWAYS">
+                  <Button fx:id="volverainicio_boton" minHeight="100.0" minWidth="133.0" mnemonicParsing="false" prefHeight="100.0" styleClass="button-transparente" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="103.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -41,7 +41,7 @@
                         <Font size="48.0" />
                      </font>
                      <HBox.margin>
-                        <Insets top="10.0" />
+                        <Insets left="30.0" top="10.0" />
                      </HBox.margin>
                   </Label>
                </children>
