@@ -32,7 +32,7 @@
          </BorderPane.margin>
       </HBox>
    </top>
-   <bottom>
+   <center>
       <VBox alignment="CENTER" prefHeight="498.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="79.0" prefWidth="800.0">
@@ -54,7 +54,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="318.0" prefWidth="800.0">
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
                      <content>
                         <TableView fx:id="table_view_resumen">
                           <columns>
@@ -68,7 +68,7 @@
                      </content>
                   </ScrollPane>
                   <Region prefHeight="318.0" prefWidth="32.0" />
-                  <BarChart fx:id="barChart" maxWidth="-Infinity" prefHeight="500.0" prefWidth="500.0">
+                  <BarChart fx:id="barChart" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -84,21 +84,21 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="BOTTOM_RIGHT">
-               <children>
-                  <Button fx:id="compare_button" mnemonicParsing="false" prefHeight="49.0" prefWidth="87.0" text="Comparar">
-                     <HBox.margin>
-                        <Insets bottom="10.0" />
-                     </HBox.margin></Button>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets right="30.0" />
-               </padding>
-            </HBox>
          </children>
       </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="compare_button" mnemonicParsing="false" prefHeight="49.0" prefWidth="87.0" text="Comparar">
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </HBox>
    </bottom>
 </BorderPane>
