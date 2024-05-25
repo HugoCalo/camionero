@@ -63,8 +63,10 @@ public class CompararMesesController implements Initializable {
     private Stage loginStage;
     private Map<String, String> colorMap;
 
-    public void setStage(Stage stage) {
+    public void setStage(Stage stage, double width, double height) {
         this.stage = stage;
+        stage.setWidth(width);
+        stage.setHeight(height);
     }
 
     public void setLoginStage(Stage loginStage) {

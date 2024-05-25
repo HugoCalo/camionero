@@ -75,8 +75,10 @@ public class DesgloseDeGastosController implements Initializable {
     @FXML
     private Label descripcion_categoria_letra;
 
-    public void setStage(Stage stage) {
+    public void setStage(Stage stage, double width, double height) {
         this.stage = stage;
+        stage.setWidth(width);
+        stage.setHeight(height);
     }
 
     public void setLoginStage(Stage loginStage) {

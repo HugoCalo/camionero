@@ -209,7 +209,9 @@ public class PantallaDeInicioController implements Initializable {
 
             // Configurar las propiedades necesarias en el controlador
             Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            controller.setStage(currentStage);
+            double currentWidth = currentStage.getWidth();
+            double currentHeight = currentStage.getHeight();
+            controller.setStage(currentStage, currentWidth, currentHeight);
             controller.setLoginStage(loginStage); // Asegurarse de pasar loginStage al nuevo controlador
 
             // Cambiar a la nueva escena
@@ -275,11 +277,13 @@ public class PantallaDeInicioController implements Initializable {
                 Parent newSceneParent = loader.load();
                 Scene newScene = new Scene(newSceneParent);
                 Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                double currentWidth = currentStage.getWidth();
+                double currentHeight = currentStage.getHeight();
                 currentStage.setScene(newScene);
                 currentStage.show();
 
                 DesgloseDeGastosController controller = loader.getController();
-                controller.setStage(currentStage);
+                controller.setStage(currentStage, currentWidth, currentHeight);
                 controller.setLoginStage(loginStage);
                 controller.setCategory(selectedCategory);
 

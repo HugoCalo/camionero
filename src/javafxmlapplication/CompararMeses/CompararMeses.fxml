@@ -37,20 +37,26 @@
          <children>
             <HBox alignment="CENTER" prefHeight="79.0" prefWidth="800.0">
                <children>
-                  <ComboBox fx:id="monthComboBox1" prefHeight="26.0" prefWidth="141.0" promptText="Mes 1" />
+                  <ComboBox fx:id="monthComboBox1" prefHeight="26.0" prefWidth="141.0" promptText="Mes 1">
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin></ComboBox>
                   <Region prefHeight="99.0" prefWidth="51.0" />
                   <ComboBox fx:id="yearComboBox1" prefHeight="26.0" prefWidth="70.0" promptText="2024" />
-                  <Region prefHeight="93.0" prefWidth="157.0" />
+                  <Region prefHeight="79.0" prefWidth="183.0" />
                   <ComboBox fx:id="monthComboBox2" prefWidth="150.0" promptText="Mes 2" />
                   <Region prefHeight="99.0" prefWidth="51.0" />
-                  <ComboBox fx:id="yearComboBox2" prefHeight="26.0" prefWidth="78.0" promptText="2024" />
+                  <ComboBox fx:id="yearComboBox2" prefHeight="26.0" prefWidth="78.0" promptText="2024">
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin></ComboBox>
                </children>
             </HBox>
-            <HBox prefHeight="318.0" prefWidth="800.0">
+            <HBox alignment="CENTER" prefHeight="318.0" prefWidth="800.0">
                <children>
-                  <ScrollPane prefHeight="333.6" prefWidth="377.6">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
                      <content>
-                        <TableView fx:id="table_view_resumen" prefHeight="350.4" prefWidth="377.6">
+                        <TableView fx:id="table_view_resumen">
                           <columns>
                             <TableColumn fx:id="categoria_column" prefWidth="75.0" text="Categorias" />
                             <TableColumn fx:id="gasto_column" prefWidth="75.0" text="Gastos" />
@@ -62,7 +68,7 @@
                      </content>
                   </ScrollPane>
                   <Region prefHeight="318.0" prefWidth="32.0" />
-                  <BarChart fx:id="barChart" prefHeight="318.0" prefWidth="385.0">
+                  <BarChart fx:id="barChart" maxWidth="-Infinity" prefHeight="500.0" prefWidth="500.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
