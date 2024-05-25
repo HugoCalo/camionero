@@ -52,9 +52,9 @@
                      </HBox.margin></ComboBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="318.0" prefWidth="800.0">
+            <HBox alignment="CENTER" prefHeight="318.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="750.0" HBox.hgrow="ALWAYS">
                      <content>
                         <TableView fx:id="table_view_resumen">
                           <columns>
@@ -68,7 +68,7 @@
                      </content>
                   </ScrollPane>
                   <Region prefHeight="318.0" prefWidth="32.0" />
-                  <BarChart fx:id="barChart" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0">
+                  <BarChart fx:id="barChart" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="750.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

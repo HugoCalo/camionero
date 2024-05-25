@@ -1,4 +1,4 @@
-package javafxmlapplication.CompararMeses;
+    package javafxmlapplication.CompararMeses;
 
 import java.io.IOException;
 import java.net.URL;
@@ -192,18 +192,20 @@ public class CompararMesesController implements Initializable {
         ObservableList<ChargeSummary> tableData = FXCollections.observableArrayList();
 
         charges1.forEach((charge) -> {
-            tableData.add(new ChargeSummary(charge.getCategory().getName(), charge.getCost(), "Month 1"));
+            double totalCost = charge.getCost() * charge.getUnits();
+            tableData.add(new ChargeSummary(charge.getCategory().getName(), totalCost, "Month 1"));
         });
         charges2.forEach((charge) -> {
-            tableData.add(new ChargeSummary(charge.getCategory().getName(), charge.getCost(), "Month 2"));
+            double totalCost = charge.getCost() * charge.getUnits();
+            tableData.add(new ChargeSummary(charge.getCategory().getName(), totalCost, "Month 2"));
         });
 
         table_view_resumen.setItems(tableData);
 
         updateBarChart(charges1, charges2);
 
-        double total1 = charges1.stream().mapToDouble(Charge::getCost).sum();
-        double total2 = charges2.stream().mapToDouble(Charge::getCost).sum();
+        double total1 = charges1.stream().mapToDouble(charge -> charge.getCost() * charge.getUnits()).sum();
+        double total2 = charges2.stream().mapToDouble(charge -> charge.getCost() * charge.getUnits()).sum();
 
         String resumen;
         if (total1 > total2) {
@@ -213,6 +215,8 @@ public class CompararMesesController implements Initializable {
         } else {
             resumen = String.format("Has gastado lo mismo en ambos meses: %.2f€.", total1);
         }
+
+        // Aquí puedes agregar el resumen a una etiqueta o mostrarlo de alguna manera en tu interfaz
     }
 
     private void updateBarChart(List<Charge> charges1, List<Charge> charges2) {
@@ -225,10 +229,10 @@ public class CompararMesesController implements Initializable {
 
         Map<String, Double> categoryTotals1 = charges1.stream()
                 .collect(Collectors.groupingBy(charge -> charge.getCategory().getName(),
-                        Collectors.summingDouble(Charge::getCost)));
+                        Collectors.summingDouble(charge -> charge.getCost() * charge.getUnits())));
         Map<String, Double> categoryTotals2 = charges2.stream()
                 .collect(Collectors.groupingBy(charge -> charge.getCategory().getName(),
-                        Collectors.summingDouble(Charge::getCost)));
+                        Collectors.summingDouble(charge -> charge.getCost() * charge.getUnits())));
 
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         series1.setName("Month 1");
