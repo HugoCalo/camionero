@@ -131,3 +131,6 @@
     -fx-background-radius: 50%; /* Hacer que el fondo del ImageView sea redondo */
     -fx-clip: circle; /* Aplicar una máscara circular */
 }
+.table-view .table-cell {
+    -fx-alignment: CENTER; /* Centra el contenido de todas las celdas por defecto */
+}
