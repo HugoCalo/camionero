@@ -1,14 +1,18 @@
 package javafxmlapplication;
 
-import java.awt.Insets;
-import java.io.FileInputStream;
+import com.itextpdf.io.font.constants.StandardFonts;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,26 +22,36 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafxmlapplication.CompararMeses.CompararMesesController;
-import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;
-import javafxmlapplication.CrearGasto.CrearGastoController;
-import javafxmlapplication.creacionCategoria.CreacionCategoriaController;
-import javafxmlapplication.mostrarGastos.MostrarGastosController;
 import model.Acount;
 import model.Category;
 import model.Charge;
 import model.AcountDAOException;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.Document;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import javafx.scene.control.ButtonType;
+import javafxmlapplication.CompararMeses.CompararMesesController;
+import javafxmlapplication.CrearGasto.CrearGastoController;
+import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;
+import javafxmlapplication.creacionCategoria.CreacionCategoriaController;
+import javafxmlapplication.mostrarGastos.MostrarGastosController;
 
 public class PantallaDeInicioController implements Initializable {
 
@@ -75,6 +89,8 @@ public class PantallaDeInicioController implements Initializable {
     private ObservableList<Category> categoryList;
     @FXML
     private ImageView imagendeperfil;
+    @FXML
+    private Button imprimir_button;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -103,31 +119,13 @@ public class PantallaDeInicioController implements Initializable {
         add_category.setOnAction(event -> handleAddCategory(event));
         modify_category.setOnAction(event -> handleModifyCategory(event));
         delete_category.setOnAction(event -> handleDeleteCategory(event));
-        
+        imprimir_button.setOnAction(event -> handlePrintButton(event));
 
         // Inicialmente deshabilitar los botones
         updateButtonStates();
 
         // Añadir listener a la selección de la tabla
         tableview_category.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> updateButtonStates());
-
-        // Cargar y mostrar la imagen de perfil del usuario
-        loadUserProfileImage();
-    }
-
-    private void loadUserProfileImage() {
-        try {
-            // Obtener la imagen del usuario logueado
-            Acount acount = Acount.getInstance();
-            if (acount != null && acount.getLoggedUser() != null) {
-                Image userImage = acount.getLoggedUser().getImage();
-                if (userImage != null) {
-                    imagendeperfil.setImage(userImage);
-                }
-            }
-        } catch (Exception e) {
-            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, e);
-        }
     }
 
     private double calculateTotalPrice(Category category) {
@@ -154,7 +152,7 @@ public class PantallaDeInicioController implements Initializable {
     }
 
     private void handleLogOut(ActionEvent event) {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cierre de sesión");
         alert.setHeaderText(null);
         alert.setContentText("¿Estas seguro que quieres cerrar la sesion?");
@@ -175,14 +173,6 @@ public class PantallaDeInicioController implements Initializable {
                 }
             }
         });
-    }
-
-    private void handleLogoButton(ActionEvent event) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Logo Button");
-        alert.setHeaderText(null);
-        alert.setContentText("Logo button clicked!");
-        alert.showAndWait();
     }
 
     private void handleShowMensualCost(ActionEvent event) {
@@ -272,7 +262,7 @@ public class PantallaDeInicioController implements Initializable {
                 Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            Alert alert = new Alert(AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Añadir Gasto");
             alert.setHeaderText(null);
             alert.setContentText("Por favor, selecciona una categoría para añadir el gasto.");
@@ -347,7 +337,7 @@ public class PantallaDeInicioController implements Initializable {
                 Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            Alert alert = new Alert(AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Modificar Categoría");
             alert.setHeaderText(null);
             alert.setContentText("Por favor, selecciona una categoría para modificar.");
@@ -358,7 +348,7 @@ public class PantallaDeInicioController implements Initializable {
     private void handleDeleteCategory(ActionEvent event) {
         Category selectedCategory = tableview_category.getSelectionModel().getSelectedItem();
         if (selectedCategory != null) {
-            Alert alert = new Alert(AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Eliminar Categoría");
             alert.setHeaderText(null);
             alert.setContentText("¿Estás seguro que quieres eliminar la categoría seleccionada?");
@@ -369,7 +359,7 @@ public class PantallaDeInicioController implements Initializable {
                         if (success) {
                             categoryList.remove(selectedCategory);
                         } else {
-                            Alert errorAlert = new Alert(AlertType.ERROR);
+                            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                             errorAlert.setTitle("Error");
                             errorAlert.setHeaderText("Error al eliminar la categoría");
                             errorAlert.setContentText("No se pudo eliminar la categoría. Inténtalo de nuevo.");
@@ -381,7 +371,7 @@ public class PantallaDeInicioController implements Initializable {
                 }
             });
         } else {
-            Alert alert = new Alert(AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Eliminar Categoría");
             alert.setHeaderText(null);
             alert.setContentText("Por favor, selecciona una categoría para eliminar.");
@@ -412,5 +402,116 @@ public class PantallaDeInicioController implements Initializable {
                 }
             }
         });
+    }
+
+    private void handlePrintButton(ActionEvent event) {
+        try {
+            List<Charge> charges = Acount.getInstance().getUserCharges();
+            String pdfPath = "resumen_gastos.pdf";
+            generatePDF(pdfPath, charges);
+
+            // Abrir el PDF en el navegador predeterminado
+            File pdfFile = new File(pdfPath);
+            if (pdfFile.exists()) {
+                Desktop.getDesktop().browse(pdfFile.toURI());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ocurrió un error al generar el PDF.");
+            alert.showAndWait();
+        }
+    }
+
+    private void generatePDF(String filePath, List<Charge> charges) {
+        try {
+            PdfWriter writer = new PdfWriter(new FileOutputStream(filePath));
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+
+            // Fuente Helvetica
+            PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+
+            // Title
+            Paragraph title = new Paragraph("Resumen de Gastos Mensuales")
+                    .setFont(font)
+                    .setTextAlignment(TextAlignment.CENTER)
+                    .setFontSize(36)
+                    .setBold();
+            document.add(title);
+            document.add(new Paragraph(" "));
+
+            // Table
+            float[] columnWidths = {1, 1, 1, 1, 1};
+            Table table = new Table(UnitValue.createPercentArray(columnWidths));
+            table.setHorizontalAlignment(HorizontalAlignment.CENTER);
+            addTableHeader(table, font);
+            addRows(table, charges, font);
+            document.add(table);
+
+            // Total Summary
+            document.add(new Paragraph(" "));
+            Paragraph categorySummaryTitle = new Paragraph("Resumen de Categorías:")
+                    .setFont(font)
+                    .setTextAlignment(TextAlignment.CENTER)
+                    .setFontSize(14);
+            document.add(categorySummaryTitle);
+
+            Map<String, Double> categorySums = calculateCategorySums(charges);
+            for (Map.Entry<String, Double> entry : categorySums.entrySet()) {
+                Paragraph categorySummary = new Paragraph(entry.getKey() + ": " + entry.getValue() + " EUR")
+                        .setFont(font)
+                        .setTextAlignment(TextAlignment.CENTER);
+                document.add(categorySummary);
+            }
+
+            // Total Expenses
+            double totalExpenses = calculateTotalExpenses(charges);
+            document.add(new Paragraph(" "));
+            Paragraph totalExpensesParagraph = new Paragraph("Gasto Total del Mes: " + totalExpenses + " EUR")
+                    .setFont(font)
+                    .setTextAlignment(TextAlignment.CENTER)
+                    .setFontSize(14);
+            document.add(totalExpensesParagraph);
+
+            document.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addTableHeader(Table table, PdfFont font) {
+        Stream.of("Nombre del Gasto", "Categoría", "Unidad", "Fecha", "Coste")
+                .forEach(columnTitle -> {
+                    Cell header = new Cell()
+                            .add(new Paragraph(columnTitle).setFont(font))
+                            .setTextAlignment(TextAlignment.CENTER)
+                            .setBackgroundColor(new DeviceRgb(211, 211, 211)) // LIGHT_GRAY color
+                            .setBold();
+                    table.addHeaderCell(header);
+                });
+    }
+
+    private void addRows(Table table, List<Charge> charges, PdfFont font) {
+        for (Charge charge : charges) {
+            table.addCell(new Cell().add(new Paragraph(charge.getName()).setFont(font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(charge.getCategory().getName()).setFont(font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(charge.getUnits())).setFont(font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(charge.getDate().toString()).setFont(font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(charge.getCost())).setFont(font)).setTextAlignment(TextAlignment.CENTER));
+        }
+    }
+
+    private Map<String, Double> calculateCategorySums(List<Charge> charges) {
+        return charges.stream().collect(
+                Collectors.groupingBy(c -> c.getCategory().getName(),
+                        Collectors.summingDouble(Charge::getCost))
+        );
+    }
+
+    private double calculateTotalExpenses(List<Charge> charges) {
+        return charges.stream().mapToDouble(Charge::getCost).sum();
     }
 }

@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/CompararMeses/compararmeses.css</file>
-            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/JavaFXMLApplication.java</file>
-            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/mostrarGastos/MostrarGastosController.java</file>
-            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/PantallaDeInicioController.java</file>
-            <file>file:/C:/Users/Jordi/Desktop/ipccamionero/camionero/src/javafxmlapplication/mostrarGastos/mostrargastos.css</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/newCascadeStyleSheet.css</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/PantallaDeInicioController.java</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/JavaFXMLApplication.java</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/CompararMeses/compararmeses.css</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/PantallaDeInicio.fxml</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/styles.css</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/main-styles.css</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/InicioDeSesion.fxml</file>
+            <file>file:/C:/Users/hugoc/Desktop/camionero/src/javafxmlapplication/InicioDeSesionController.java</file>
         </group>
     </open-files>
 </project-private>

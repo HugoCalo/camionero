@@ -57,7 +57,7 @@
                                  </children>
                               </AnchorPane>
                            </graphic></Button>
-                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="72.0" styleClass="button-rounded-orange">
+                        <Button fx:id="imprimir_button" mnemonicParsing="false" prefHeight="53.0" prefWidth="72.0" styleClass="button-rounded-orange">
                            <graphic>
                               <AnchorPane prefHeight="45.0" prefWidth="66.0">
                                  <children>
