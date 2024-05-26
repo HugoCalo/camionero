@@ -281,10 +281,12 @@ public class PantallaDeInicioController implements Initializable {
             controller.setLoginStage(loginStage);
             controller.setPantallaDeInicioController(this); // Pasar el controlador de PantallaDeInicio
             controller.setEditProfileMode(); // Método nuevo para configurar la pantalla para editar perfil
+            
 
             Stage stage = new Stage();
             stage.setTitle("Modificar Perfil");
             stage.setScene(new Scene(root));
+            controller.setStage(stage);
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);

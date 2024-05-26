@@ -55,6 +55,7 @@ public class CrearCuentaController implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        this.stage.setResizable(false);
     }
 
     public void setPantallaDeInicioController(PantallaDeInicioController controller) {
@@ -222,6 +223,7 @@ public class CrearCuentaController implements Initializable {
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(contenido);
+        alert.getDialogPane().getStylesheets().add(getClass().getResource("alert.css").toExternalForm());
         alert.showAndWait();
     }
 
