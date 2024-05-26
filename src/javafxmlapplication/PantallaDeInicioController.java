@@ -339,7 +339,6 @@ public class PantallaDeInicioController implements Initializable {
                 currentStage.show();
 
             } catch (IOException | AcountDAOException e) {
-                e.printStackTrace();
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -468,7 +467,6 @@ public class PantallaDeInicioController implements Initializable {
                 Desktop.getDesktop().browse(pdfFile.toURI());
             }
         } catch (Exception e) {
-            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -530,7 +528,6 @@ public class PantallaDeInicioController implements Initializable {
 
             document.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

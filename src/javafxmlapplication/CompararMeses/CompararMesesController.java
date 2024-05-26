@@ -1,4 +1,4 @@
-    package javafxmlapplication.CompararMeses;
+package javafxmlapplication.CompararMeses;
 
 import java.io.IOException;
 import java.net.URL;
@@ -248,12 +248,28 @@ public class CompararMesesController implements Initializable {
 
         barChart.getData().addAll(series1, series2);
 
+        // Aplicar colores a las barras
         for (XYChart.Data<String, Number> data : series1.getData()) {
             data.getNode().setStyle("-fx-bar-fill: #FF6E0D;");
         }
         for (XYChart.Data<String, Number> data : series2.getData()) {
             data.getNode().setStyle("-fx-bar-fill: darkgray;");
         }
+
+        // Actualizar la leyenda con los colores correctos
+        updateLegendColors(series1, series2);
+    }
+
+    private void updateLegendColors(XYChart.Series<String, Number> series1, XYChart.Series<String, Number> series2) {
+        for (XYChart.Series<String, Number> series : barChart.getData()) {
+            for (XYChart.Data<String, Number> data : series.getData()) {
+                data.getNode().getParent().getStyleClass().add("default-color" + barChart.getData().indexOf(series));
+            }
+        }
+
+        // Aquí actualizamos el color de la leyenda
+        barChart.lookupAll(".default-color0.chart-legend-item-symbol").forEach(n -> n.setStyle("-fx-background-color: #FF6E0D;"));
+        barChart.lookupAll(".default-color1.chart-legend-item-symbol").forEach(n -> n.setStyle("-fx-background-color: darkgray;"));
     }
 
     public static class ChargeSummary {
