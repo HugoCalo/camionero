@@ -10,6 +10,9 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -20,12 +23,24 @@
    <top>
       <HBox prefHeight="83.0" prefWidth="780.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="return_pantalla_principal" mnemonicParsing="false" prefHeight="101.0" prefWidth="140.0" styleClass="button-transparente" />
+            <Button fx:id="return_pantalla_principal" mnemonicParsing="false" prefHeight="72.0" prefWidth="118.0" styleClass="button-transparente">
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/casita.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Ir a la página de inicio" />
+               </tooltip></Button>
+            <Region prefHeight="83.0" prefWidth="43.0" HBox.hgrow="ALWAYS" />
             <Label prefHeight="102.0" prefWidth="471.0" styleClass="label-title" text="Comparacion de meses ">
                <font>
                   <Font size="41.0" />
                </font>
             </Label>
+            <Region prefHeight="83.0" prefWidth="109.0" HBox.hgrow="ALWAYS" />
          </children>
          <BorderPane.margin>
             <Insets left="30.0" top="30.0" />

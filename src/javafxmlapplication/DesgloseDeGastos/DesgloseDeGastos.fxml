@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -24,9 +25,12 @@
          <children>
             <HBox HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="volverainicio_boton" minHeight="100.0" minWidth="133.0" mnemonicParsing="false" prefHeight="100.0" styleClass="button-transparente" HBox.hgrow="ALWAYS">
+                  <Button fx:id="volverainicio_boton" minHeight="72.0" minWidth="118.0" mnemonicParsing="false" prefHeight="80.0" styleClass="button-transparente" HBox.hgrow="ALWAYS">
                      <graphic>
-                        <ImageView fitHeight="103.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="75.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/casita.png" />
+                           </image></ImageView>
                      </graphic>
                      <tooltip>
                         <Tooltip fx:id="volverainico_señal" text="Ir a la página de inicio" />

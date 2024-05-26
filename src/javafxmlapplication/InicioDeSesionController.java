@@ -112,7 +112,7 @@ public class InicioDeSesionController implements Initializable {
         PantallaDeInicioController controlador = cargador.getController();
         Stage stageInicio = new Stage();
         stageInicio.setScene(new Scene(root));
-        stageInicio.setTitle("CashSplash");
+        stageInicio.setTitle("BlackLeaf");
         stageInicio.show();
 
         controlador.setStageLogin(stage); // Cambiado: Se pasa el stage actual al controlador de PantallaDeInicio

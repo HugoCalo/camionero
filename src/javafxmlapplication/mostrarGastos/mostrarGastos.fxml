@@ -7,19 +7,22 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.mostrarGastos.MostrarGastosController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" styleClass="border-pane" stylesheets="@mostrargastos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.mostrarGastos.MostrarGastosController">
    <center>
       <VBox alignment="CENTER" prefHeight="457.0" prefWidth="830.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="839.0" VBox.vgrow="NEVER">
                <children>
-                  <Label text="Usuario: " HBox.hgrow="ALWAYS">
+                  <Label styleClass="label-naranja" text="Usuario: " HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -34,15 +37,15 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="35.0" />
                </VBox.margin>
                <padding>
-                  <Insets left="20.0" right="20.0" />
+                  <Insets left="40.0" right="20.0" />
                </padding>
             </HBox>
             <HBox prefHeight="20.0" prefWidth="728.0">
                <children>
-                  <Label text="Nombre real: ">
+                  <Label styleClass="label-naranja" text="Nombre real: " HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -57,12 +60,15 @@
                   </Label>
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="40.0" />
                </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="857.0" VBox.vgrow="NEVER">
                <children>
-                  <Label text="Fecha Actual: " HBox.hgrow="ALWAYS">
+                  <Label styleClass="label-naranja" text="Fecha Actual: " HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -77,8 +83,11 @@
                   </Label>
                </children>
                <padding>
-                  <Insets left="20.0" right="20.0" />
+                  <Insets left="40.0" right="20.0" />
                </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </HBox>
             <HBox VBox.vgrow="ALWAYS">
                <VBox.margin>
@@ -106,12 +115,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="91.0" prefWidth="611.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="GASTO TOTAL:">
+                  <Label styleClass="label-gasto-naranja" text="GASTO TOTAL:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gasto_total" contentDisplay="BOTTOM" text="gasto total">
+                  <Label fx:id="gasto_total" contentDisplay="BOTTOM" styleClass="label-gasto" text="gasto total">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -136,12 +145,25 @@
             <Insets left="30.0" top="30.0" />
          </BorderPane.margin>
          <children>
-            <Button fx:id="volver_inicio_buton" mnemonicParsing="false" prefHeight="72.0" prefWidth="168.0" text="Button" />
+            <Button fx:id="volver_inicio_buton" mnemonicParsing="false" prefHeight="72.0" prefWidth="118.0">
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/casita.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Ir a la página de inicio" />
+               </tooltip></Button>
             <Region maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="82.0" HBox.hgrow="ALWAYS" />
-            <Label alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Resumen de gastos">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="label-title" text="Resumen de gastos">
                <font>
                   <Font size="34.0" />
                </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </Label>
             <Region maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="95.0" HBox.hgrow="ALWAYS">
                <HBox.margin>

@@ -1,5 +1,3 @@
-
-
 /* Estilos para el BorderPane (color #272727) */
 .border-pane {
     -fx-background-color: #272727;
@@ -19,6 +17,12 @@
     -fx-font-size: 12px;
 }
 
+.label-naranja {
+    -fx-text-fill: #F57D0D;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
 /* Estilo para los TextFields y ComboBoxes */
 .text-field, .combo-box {
     -fx-background-color: #383838;
@@ -34,9 +38,31 @@
     -fx-background-insets: 2;
 }
 
+/* Estilo específico para ComboBox */
+.combo-box .list-cell {
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #383838;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #ffffff;
+}
+
+.combo-box .list-view {
+    -fx-background-color: #383838;
+    -fx-control-inner-background: #383838;
+    -fx-text-fill: #ffffff;
+}
+
 /* Estilo para los botones */
 .button {
-    -fx-background-color: #F57D0D;
+    -fx-background-color: #272727;
     -fx-text-fill: #ffffff;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
@@ -52,8 +78,6 @@
 }
 
 /* Estilo para la TableView */
-
-
 
 .table-view {
     -fx-background-color: #333333; /* Fondo de la tabla */
@@ -96,21 +120,12 @@
     -fx-border-radius: 20px;
 }
 
-/* Estilo para la BarChart */
-.bar-chart {
-/*    -fx-background-color: #383838;*/
+/* Estilo para el PieChart */
+.pie-chart {
+    -fx-background-color: #383838;
     -fx-text-fill: #ffffff;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
-}
-
-.axis {
-    -fx-tick-label-fill: #ffffff;
-    -fx-font-size: 12px;
-}
-
-.axis .axis-label {
-    -fx-text-fill: #ffffff;
 }
 
 .chart-legend {
@@ -125,40 +140,29 @@
     -fx-border-color: #272727;
 }
 
-.default-color0.chart-bar {
-    -fx-bar-fill: #F57D0D;
+.default-color0.chart-pie {
+    -fx-pie-fill: #F57D0D;
 }
 
-.default-color1.chart-bar {
-    -fx-bar-fill: #D3D3D3; /* Gris para Month 2 */
+.chart-pie-label {
+    -fx-text-fill: #ffffff; /* Color blanco para los títulos del gráfico sectorial */
 }
 
-.combo-box .list-cell {
+/* Estilo para las etiquetas de los segmentos del gráfico sectorial */
+.chart-pie-label {
+    -fx-fill: #ffffff; /* Color blanco para las etiquetas de los segmentos */
+}
+
+.label-gasto {
     -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
 }
 
-.button-transparente {
-    -fx-background-color: #272727;
-    -fx-text-fill: #ffffff;
-    -fx-background-radius: 20px;
-    -fx-border-radius: 20px;
+.label-gasto-naranja {
+    -fx-text-fill: #F57D0D;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
 }
 
-.combo-box .arrow-button {
-    -fx-background-color: #383838;
-    -fx-background-radius: 20px;
-    -fx-border-radius: 20px;
-}
 
-.combo-box .arrow-button .arrow {
-    -fx-background-color: #ffffff;
-}
-
-.combo-box .list-view {
-    -fx-background-color: #383838;
-    -fx-control-inner-background: #383838;
-    -fx-text-fill: #ffffff;
-}
-
-/* Cambia el color de fondo de los elementos cuando el cursor está sobre ellos */
 
