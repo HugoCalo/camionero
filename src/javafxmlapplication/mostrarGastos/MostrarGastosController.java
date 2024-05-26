@@ -21,6 +21,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -63,12 +64,12 @@ public class MostrarGastosController implements Initializable {
     private Label gasto_total;
     @FXML
     private PieChart pieChart;
+    @FXML
+    private ScrollPane scroll_pane;
 
     private ObservableList<Charge> chargesList;
     private Stage stage;
     private Stage loginStage;
-    @FXML
-    private ScrollPane scroll_pane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -87,6 +88,7 @@ public class MostrarGastosController implements Initializable {
             setupPieChart();
             calculateTotalCost();
         } catch (AcountDAOException | IOException ex) {
+            Logger.getLogger(MostrarGastosController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -104,6 +106,19 @@ public class MostrarGastosController implements Initializable {
         tableview.setItems(chargesList);
         NombreGasto_column.setCellValueFactory(new PropertyValueFactory<>("name"));
         categoria_column.setCellValueFactory(new PropertyValueFactory<>("category"));
+        categoria_column.setCellFactory(column -> {
+            return new TableCell<Charge, Category>() {
+                @Override
+                protected void updateItem(Category item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || empty) {
+                        setText(null);
+                    } else {
+                        setText(item.getName());
+                    }
+                }
+            };
+        });
         fecha_column.setCellValueFactory(new PropertyValueFactory<>("date"));
         coste_column.setCellValueFactory(new PropertyValueFactory<>("cost"));
         unidades_column.setCellValueFactory(new PropertyValueFactory<>("units"));
@@ -128,6 +143,7 @@ public class MostrarGastosController implements Initializable {
                 .sum();
         gasto_total.setText(String.format("%.2f", totalCost));
     }
+
     private void handleReturnPantallaPrincipal(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxmlapplication/PantallaDeInicio.fxml"));
