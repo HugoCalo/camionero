@@ -16,25 +16,44 @@
     -fx-text-fill: white;
     -fx-padding: 10 20; /* Un poco ancho */
 }
+/* Botón con borde blanco grueso */
+.button-border-thick-white {
+    -fx-background-color: transparent;
+    -fx-background-radius: 20; /* Bordes redondeados */
+    -fx-text-fill: white;
+    -fx-padding: 10 20; /* Un poco ancho */
+    -fx-border-color: white; /* Borde blanco */
+    -fx-border-width: 3; /* Borde grueso */
+    -fx-border-radius: 20; /* Mantener el mismo radio de borde */
+}
+
+.button-border-thick-white:focused {
+    -fx-border-color: white; /* Borde blanco en el enfoque también */
+    -fx-border-width: 3; /* Mantener el borde grueso en el enfoque */
+    -fx-border-radius: 20; /* Mantener el mismo radio de borde */
+}   
+
 
 .button-rounded-orange:focused {
     -fx-border-color: white;
-    -fx-border-width: 4;
-    -fx-border-radius: 20; /* Mantener el mismo radio de borde */
+    -fx-border-width: 3;
+    -fx-border-radius: 18; /* Mantener el mismo radio de borde */
 }
 
 /* Botón redondo y transparente con el focus en negro */
 .button-round-transparent {
     -fx-background-color: transparent;
     -fx-background-radius: 50; /* Redondo */
+    -fx-border-width: 3;
+    fx-border-color: transparent;
     -fx-text-fill: white;
     -fx-padding: 10;
 }
 
 .button-round-transparent:focused {
-    -fx-border-color: black;
-    -fx-border-width: 2;
-    -fx-border-radius: 50;
+    -fx-border-color: #F57D0D;
+    -fx-border-width: 3;
+    -fx-border-radius: 20;
 }
 
 /* Botón redondo y de color 383838 con el focus en negro */
@@ -61,7 +80,7 @@
 
 .button-rounded:focused {
     -fx-border-color: white;
-    -fx-border-width: 4;
+    -fx-border-width: 1;
     -fx-border-radius: 20;
 }
 
@@ -95,7 +114,7 @@
 
 .table-view:focused {
     -fx-border-color: #383838; /* Bordes invisibles */
-    -fx-border-width: 4;
+    -fx-border-width: 0;
 }
 
 /* Fila seleccionada con fondo naranja */

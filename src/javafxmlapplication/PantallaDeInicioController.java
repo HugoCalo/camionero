@@ -126,6 +126,25 @@ public class PantallaDeInicioController implements Initializable {
 
         // Añadir listener a la selección de la tabla
         tableview_category.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> updateButtonStates());
+
+        // Cargar y mostrar la imagen de perfil del usuario
+        loadUserProfileImage();
+    }
+
+    private void loadUserProfileImage() {
+        try {
+            // Obtener la imagen del usuario logueado
+            Acount acount = Acount.getInstance();
+            if (acount != null && acount.getLoggedUser() != null) {
+                Image userImage = acount.getLoggedUser().getImage();
+                if (userImage != null) {
+                    imagendeperfil.setImage(userImage);
+                }else{
+                }
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     private double calculateTotalPrice(Category category) {

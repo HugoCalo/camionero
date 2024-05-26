@@ -137,6 +137,7 @@ public class CrearCuentaController implements Initializable {
         if (file != null) {
             profileImage = new Image(file.toURI().toString());
             profileImageView.setImage(profileImage);
+            
         }
     }
 

@@ -32,7 +32,9 @@
     -fx-text-fill: #ffffff;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
+    -fx-border-width: 2px;
     -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
+    -fx-background-insets: 2;
 }
 
 .text-field:focused {
@@ -48,6 +50,7 @@
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
     -fx-prompt-text-fill: #ffffff; /* Color del texto de sugerencia */
+    -fx-border-width: 2px;
 }
 
 .password-field .text {
@@ -66,6 +69,12 @@
     -fx-text-fill: #ffffff;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
+    -fx-border-width: 3;
+}
+.button-login.focused {
+    -fx-border-color: white; /* Borde blanco en el enfoque también */
+    -fx-border-width: 3; /* Mantener el borde grueso en el enfoque */
+    -fx-border-radius: 20;
 }
 
 /* Estilo para los Separators */
