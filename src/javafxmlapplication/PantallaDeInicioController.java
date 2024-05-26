@@ -288,7 +288,7 @@ public class PantallaDeInicioController implements Initializable {
                 currentStage.show();
 
             } catch (IOException | AcountDAOException e) {
-
+                e.printStackTrace();
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
