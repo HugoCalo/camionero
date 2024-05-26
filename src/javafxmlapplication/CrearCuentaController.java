@@ -47,6 +47,7 @@ public class CrearCuentaController implements Initializable {
     private Label titulin;
     
     private boolean isEditProfileMode = false; // Flag to check if in edit profile mode
+    private PantallaDeInicioController pantallaDeInicioController; // Add this
 
     public void setLoginStage(Stage loginStage) {
         this.loginStage = loginStage;
@@ -54,6 +55,10 @@ public class CrearCuentaController implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void setPantallaDeInicioController(PantallaDeInicioController controller) {
+        this.pantallaDeInicioController = controller;
     }
 
     @Override
@@ -90,12 +95,18 @@ public class CrearCuentaController implements Initializable {
                 if (isEditProfileMode) {
                     if (handleUpdateProfileAction(event)) {
                         ponerEnBlanco();
+                        if (pantallaDeInicioController != null) {
+                            pantallaDeInicioController.loadUserProfileImage();
+                        }
                         stage.close();
                         switchToLoginScene();
                     }
                 } else {
                     if (handleRegisterAction(event)) {
                         ponerEnBlanco();
+                        if (pantallaDeInicioController != null) {
+                            pantallaDeInicioController.loadUserProfileImage();
+                        }
                         switchToLoginScene();
                     }
                 }
@@ -248,7 +259,7 @@ public class CrearCuentaController implements Initializable {
             user.setEmail(email);
             user.setPassword(password);
             user.setImage(profileImage);
-
+            
             return true;
         } catch (AcountDAOException e) {
             mostrarAlerta(AlertType.ERROR, "Error al actualizar el perfil", "Ocurrió un error al intentar actualizar el perfil");

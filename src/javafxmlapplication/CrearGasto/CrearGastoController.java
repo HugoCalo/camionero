@@ -138,7 +138,7 @@ public class CrearGastoController implements Initializable {
         LocalDate date = add_date.getValue();
 
         if (receiptImage == null) {
-            receiptImage = new Image("file:imagenes/loguito guapo.png");
+            receiptImage = new Image("file:src/javafxmlapplication/imagenes/añadir foto mo.png");
             anadirRecibo_imagen.setImage(receiptImage);
         }
 

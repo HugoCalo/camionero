@@ -1,0 +1,45 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 26 may 2024, 18:24:12
+    Author     : Alex
+*/
+
+.alert {
+    -fx-background-color: #383838;
+    -fx-text-fill: white;
+}
+
+.dialog-pane {
+    -fx-background-color: #383838;
+}
+
+.dialog-pane .content {
+    -fx-background-color: #383838;
+    -fx-text-fill: white;
+}
+
+.dialog-pane .button-bar {
+    -fx-background-color: #383838;
+}
+
+.dialog-pane .button {
+    -fx-background-color: #F57D0D; /* Verde */
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #383838;
+    -fx-text-fill: white;
+}
+
+.dialog-pane .graphic-container {
+    -fx-background-color: #383838;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+}

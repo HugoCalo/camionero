@@ -47,6 +47,7 @@ import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafxmlapplication.CompararMeses.CompararMesesController;
 import javafxmlapplication.CrearGasto.CrearGastoController;
@@ -92,6 +93,22 @@ public class PantallaDeInicioController implements Initializable {
     private ImageView imagendeperfil;
     @FXML
     private Button imprimir_button;
+    @FXML
+    private Tooltip anadir_categoría_tooltip;
+    @FXML
+    private Tooltip editar_categoria_tooltip;
+    @FXML
+    private Tooltip eliminar_categoria_tooltip;
+    @FXML
+    private Tooltip comparar_meses_tooltip;
+    @FXML
+    private Tooltip Ver_gastos_mensuales_tooltip;
+    @FXML
+    private Tooltip imprimir_tooltip;
+    @FXML
+    private Tooltip modificar_perfil_tooltip;
+    @FXML
+    private Tooltip cerrar_sesion_tooltip;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -122,6 +139,16 @@ public class PantallaDeInicioController implements Initializable {
         delete_category.setOnAction(event -> handleDeleteCategory(event));
         imprimir_button.setOnAction(event -> handlePrintButton(event));
 
+        // Asignar Tooltips a los botones
+        add_category.setTooltip(anadir_categoría_tooltip);
+        modify_category.setTooltip(editar_categoria_tooltip);
+        delete_category.setTooltip(eliminar_categoria_tooltip);
+        compare_month.setTooltip(comparar_meses_tooltip);
+        show_mensual_cost.setTooltip(Ver_gastos_mensuales_tooltip);
+        imprimir_button.setTooltip(imprimir_tooltip);
+        show_profile.setTooltip(modificar_perfil_tooltip);
+        log_out.setTooltip(cerrar_sesion_tooltip);
+
         // Inicialmente deshabilitar los botones
         updateButtonStates();
 
@@ -132,7 +159,7 @@ public class PantallaDeInicioController implements Initializable {
         loadUserProfileImage();
     }
 
-    private void loadUserProfileImage() {
+    public void loadUserProfileImage() {
         try {
             // Obtener la imagen del usuario logueado
             Acount acount = Acount.getInstance();
@@ -140,7 +167,8 @@ public class PantallaDeInicioController implements Initializable {
                 Image userImage = acount.getLoggedUser().getImage();
                 if (userImage != null) {
                     imagendeperfil.setImage(userImage);
-                }else{
+                } else {
+                    imagendeperfil.setImage(new Image("file:imagenes/default-profile.png")); // Imagen por defecto
                 }
             }
         } catch (Exception e) {
@@ -173,6 +201,7 @@ public class PantallaDeInicioController implements Initializable {
 
     private void handleLogOut(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.getDialogPane().getStylesheets().add(getClass().getResource("alert.css").toExternalForm());
         alert.setTitle("Cierre de sesión");
         alert.setHeaderText(null);
         alert.setContentText("¿Estas seguro que quieres cerrar la sesion?");
@@ -250,12 +279,12 @@ public class PantallaDeInicioController implements Initializable {
 
             CrearCuentaController controller = loader.getController();
             controller.setLoginStage(loginStage);
+            controller.setPantallaDeInicioController(this); // Pasar el controlador de PantallaDeInicio
             controller.setEditProfileMode(); // Método nuevo para configurar la pantalla para editar perfil
 
             Stage stage = new Stage();
             stage.setTitle("Modificar Perfil");
             stage.setScene(new Scene(root));
-            controller.setStage(stage);
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(PantallaDeInicioController.class.getName()).log(Level.SEVERE, null, ex);
@@ -369,9 +398,10 @@ public class PantallaDeInicioController implements Initializable {
         Category selectedCategory = tableview_category.getSelectionModel().getSelectedItem();
         if (selectedCategory != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("alert.css").toExternalForm());
             alert.setTitle("Eliminar Categoría");
-            alert.setHeaderText(null);
-            alert.setContentText("¿Estás seguro que quieres eliminar la categoría seleccionada?");
+            alert.setHeaderText("\n¿Estás seguro que quieres eliminar la categoría seleccionada?\nTodos los gastos asociados a la categoría se eliminarán");
+            alert.setContentText(null);
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     try {

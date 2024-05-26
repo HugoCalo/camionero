@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -45,7 +46,10 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                           </graphic></Button>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip fx:id="comparar_meses_tooltip" text="Comparar meses" />
+                           </tooltip></Button>
                       <Button fx:id="show_mensual_cost" alignment="CENTER" mnemonicParsing="false" prefHeight="74.0" prefWidth="97.0" styleClass="button-rounded-orange" textAlignment="CENTER" wrapText="true">
                            <graphic>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -57,7 +61,10 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                           </graphic></Button>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip fx:id="Ver_gastos_mensuales_tooltip" text="Ver gastos mensuales" />
+                           </tooltip></Button>
                         <Button fx:id="imprimir_button" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" styleClass="button-rounded-orange">
                            <graphic>
                               <AnchorPane prefHeight="45.0" prefWidth="66.0">
@@ -69,7 +76,10 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                           </graphic></Button>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip fx:id="imprimir_tooltip" text="Imprimir gastos mensuales" />
+                           </tooltip></Button>
                      </children>
                   </HBox>
               </items>
@@ -88,6 +98,9 @@
                <graphic>
                   <ImageView fx:id="imagendeperfil" fitHeight="63.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
+               <tooltip>
+                  <Tooltip fx:id="modificar_perfil_tooltip" text="Modificar perfil" />
+               </tooltip>
             </Button>
             <Button fx:id="log_out" mnemonicParsing="false" prefHeight="70.0" prefWidth="78.0" styleClass="button-round-transparent">
                <HBox.margin>
@@ -104,6 +117,9 @@
                      </children>
                   </AnchorPane>
                </graphic>
+               <tooltip>
+                  <Tooltip fx:id="cerrar_sesion_tooltip" text="Cerrar sesión" />
+               </tooltip>
             </Button>
          </children>
       </HBox>
@@ -153,7 +169,10 @@
                                           </ImageView>
                                        </children>
                                     </AnchorPane>
-                                 </graphic></Button>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip fx:id="anadir_categoría_tooltip" text="Añadir categoría" />
+                                 </tooltip></Button>
                               <Button fx:id="modify_category" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="67.0" prefWidth="90.0" styleClass="button-border-thick-white" textAlignment="CENTER" wrapText="true">
                                  <graphic>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -168,7 +187,10 @@
                                  </graphic>
                                  <VBox.margin>
                                     <Insets top="7.0" />
-                                 </VBox.margin></Button>
+                                 </VBox.margin>
+                                 <tooltip>
+                                    <Tooltip fx:id="editar_categoria_tooltip" text="Editar categoría" />
+                                 </tooltip></Button>
                               <Button fx:id="delete_category" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="59.0" prefWidth="85.0" styleClass="button-border-thick-white" textAlignment="CENTER" wrapText="true">
                                  <graphic>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -183,7 +205,10 @@
                                  </graphic>
                                  <VBox.margin>
                                     <Insets top="7.0" />
-                                 </VBox.margin></Button>
+                                 </VBox.margin>
+                                 <tooltip>
+                                    <Tooltip fx:id="eliminar_categoria_tooltip" text="Eliminar categoría" />
+                                 </tooltip></Button>
                            </children>
                         </VBox>
                     </items>
