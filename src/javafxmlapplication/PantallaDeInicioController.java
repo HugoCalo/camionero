@@ -47,6 +47,7 @@ import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafxmlapplication.CompararMeses.CompararMesesController;
 import javafxmlapplication.CrearGasto.CrearGastoController;
 import javafxmlapplication.DesgloseDeGastos.DesgloseDeGastosController;

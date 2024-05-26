@@ -68,10 +68,11 @@
     -fx-background-color: #F57D0D;
     -fx-text-fill: #ffffff;
     -fx-background-radius: 20px;
+    -fx-border-color: transparent;
     -fx-border-radius: 20px;
     -fx-border-width: 3;
 }
-.button-login.focused {
+.button-login:focused {
     -fx-border-color: white; /* Borde blanco en el enfoque también */
     -fx-border-width: 3; /* Mantener el borde grueso en el enfoque */
     -fx-border-radius: 20;

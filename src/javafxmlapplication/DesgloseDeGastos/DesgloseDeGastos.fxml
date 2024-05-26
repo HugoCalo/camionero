@@ -105,7 +105,7 @@
                <content>
                   <TableView fx:id="tableview_gastos_cat">
                     <columns>
-                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="nombre" />
+                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="gasto" />
                       <TableColumn fx:id="dateColumn" prefWidth="75.0" text="fecha" />
                         <TableColumn fx:id="costColumn" prefWidth="75.0" text="coste" />
                         <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="descripción" />

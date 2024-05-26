@@ -83,7 +83,7 @@
                      </content>
                   </ScrollPane>
                   <Region prefHeight="318.0" prefWidth="32.0" />
-                  <BarChart fx:id="barChart" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="750.0">
+                  <BarChart fx:id="barChart" animated="false" legendVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="750.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

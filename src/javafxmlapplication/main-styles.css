@@ -14,6 +14,8 @@
     -fx-background-color: #F57D0D;
     -fx-background-radius: 20; /* Bordes redondeados */
     -fx-text-fill: white;
+    -fx-border-width: 3;
+    -fx-border-color: transparent;
     -fx-padding: 10 20; /* Un poco ancho */
 }
 /* Botón con borde blanco grueso */
@@ -28,7 +30,7 @@
 }
 
 .button-border-thick-white:focused {
-    -fx-border-color: white; /* Borde blanco en el enfoque también */
+    -fx-border-color: #F57D0D; /* Borde blanco en el enfoque también */
     -fx-border-width: 3; /* Mantener el borde grueso en el enfoque */
     -fx-border-radius: 20; /* Mantener el mismo radio de borde */
 }   
@@ -45,7 +47,7 @@
     -fx-background-color: transparent;
     -fx-background-radius: 50; /* Redondo */
     -fx-border-width: 3;
-    fx-border-color: transparent;
+    -fx-border-color: transparent;
     -fx-text-fill: white;
     -fx-padding: 10;
 }
